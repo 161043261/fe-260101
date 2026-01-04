@@ -1,0 +1,21 @@
+cp ./packages/vue/src/postcss.config.js ./packages/react/src/
+cp ./packages/vue/src/index.css ./packages/react/src/
+
+cp ./packages/vue/src/components/alert/index.css       ./packages/react/src/components/alert/
+cp ./packages/vue/src/components/button/index.css      ./packages/react/src/components/button/
+cp ./packages/vue/src/components/collapse/index.css    ./packages/react/src/components/collapse/
+cp ./packages/vue/src/components/common/index.css      ./packages/react/src/components/common/
+cp ./packages/vue/src/components/container/index.css   ./packages/react/src/components/container/
+cp ./packages/vue/src/components/date-picker/index.css ./packages/react/src/components/date-picker/
+cp ./packages/vue/src/components/dialog/index.css      ./packages/react/src/components/dialog/
+cp ./packages/vue/src/components/dropdown/index.css    ./packages/react/src/components/dropdown/
+cp ./packages/vue/src/components/form/index.css        ./packages/react/src/components/form/
+cp ./packages/vue/src/components/icon/index.css        ./packages/react/src/components/icon/
+cp ./packages/vue/src/components/input/index.css       ./packages/react/src/components/input/
+cp ./packages/vue/src/components/link/index.css        ./packages/react/src/components/link/
+cp ./packages/vue/src/components/message/index.css     ./packages/react/src/components/message/
+cp ./packages/vue/src/components/message-box/index.css ./packages/react/src/components/message-box/
+cp ./packages/vue/src/components/rate/index.css        ./packages/react/src/components/rate/
+cp ./packages/vue/src/components/select/index.css      ./packages/react/src/components/select/
+cp ./packages/vue/src/components/switch/index.css      ./packages/react/src/components/switch/
+cp ./packages/vue/src/components/tooltip/index.css     ./packages/react/src/components/tooltip/

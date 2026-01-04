@@ -1,0 +1,25 @@
+{
+  "name": "lark-ui",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "format": "cd ./packages/react && pnpm format && cd ../vue && pnpm format",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "Component Library"
+  ],
+  "author": "github.com/161043261",
+  "license": "MIT",
+  "packageManager": "pnpm@10.20.0",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "lint-staged": {
+    "*.{md,json,yml,yaml,html,js,jsx,mjs,cjs,ts,tsx,mts,cts,vue}": [
+      "pnpm format"
+    ]
+  }
+}

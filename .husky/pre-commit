@@ -1,0 +1,28 @@
+# current_branch=$(git symbolic-ref --short HEAD)
+
+root=$(pwd)
+
+format_react() {
+  cd $root/packages/react
+  pnpm format
+}
+
+format_vue() {
+  cd $root/packages/vue
+  pnpm format
+}
+
+# format_react
+# format_vue
+
+# pnpm exec lint-staged
+
+case "$(uname -s)" in
+  Linux*)
+    format_react
+    format_vue
+    ;;
+  *)
+    pnpm exec lint-staged
+    ;;
+esac
