@@ -29,7 +29,7 @@
     "lint-staged": "^16.2.7"
   },
   "lint-staged": {
-    "*.{md,json,yml,yaml,html,js,jsx,mjs,cjs,ts,tsx,mts,cts,vue}": [
+    "*.{md,json,yml,yaml,html,css,js,jsx,ts,tsx,vue}": [
       "pnpm format"
     ]
   }
