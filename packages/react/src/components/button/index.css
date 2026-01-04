@@ -14,7 +14,7 @@
   font-weight: 500;
   padding: 0.75rem 1.25rem;
   font-size: 0.875rem;
-  border-radius: 0.25rem;
+  border-radius: var(--lark-border-radius-base);
 
   /* 相邻兄弟选择器 */
   & + & {
@@ -26,11 +26,16 @@
     opacity: 0.7;
   }
   &.is-round {
-    border-radius: var(--lark-border-radius-base);
+    /* vmax = Math.max(100vw, 100vh) */
+    border-radius: 100vmax;
   }
   &.is-circle {
     border-radius: 50%;
     padding: 0.5rem;
+
+    & > :first-child.lark-icon {
+      margin: 0.3125rem;
+    }
   }
   &:hover {
     opacity: 0.7;

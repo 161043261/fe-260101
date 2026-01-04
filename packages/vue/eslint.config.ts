@@ -42,7 +42,7 @@ export default defineConfigWithVueTs(
           html: {
             // always, never, any
             void: 'always',
-            normal: 'never',
+            normal: 'any',
             component: 'always',
           },
           svg: 'always',

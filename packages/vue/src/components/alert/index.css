@@ -1,6 +1,6 @@
 .lark-alert {
   width: 100%;
-  height: 2.125rem;
+  min-height: 2.125rem;
   /* 上下 0, 左右 1rem */
   padding: 0 1rem;
   position: relative;

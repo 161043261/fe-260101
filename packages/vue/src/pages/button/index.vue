@@ -37,7 +37,7 @@ import LarkButton from '@/components/button/index.vue'
       <LarkButton type="success" circle icon="check" />
       <LarkButton type="info" circle icon="message" />
       <LarkButton type="warning" circle icon="star" />
-      <LarkButton type="danger" circle icon="delete" />
+      <LarkButton type="danger" circle icon="remove" />
     </div>
 
     <h3>按钮尺寸</h3>
@@ -63,7 +63,7 @@ import LarkButton from '@/components/button/index.vue'
     <div class="demo-row">
       <LarkButton type="primary" icon="edit">编辑</LarkButton>
       <LarkButton type="success" icon="check">确认</LarkButton>
-      <LarkButton type="danger" icon="delete">删除</LarkButton>
+      <LarkButton type="danger" icon="remove">删除</LarkButton>
     </div>
   </div>
 </template>
