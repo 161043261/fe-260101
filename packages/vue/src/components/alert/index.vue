@@ -27,7 +27,7 @@ const handleClose = (e: MouseEvent) => {
   emit('close', e)
 }
 
-const getAlertIcon = () => {
+const alertIcon = computed(() => {
   switch (type) {
     case 'error': {
       return 'circle-xmark'
@@ -45,7 +45,7 @@ const getAlertIcon = () => {
       return 'circle-info'
     }
   }
-}
+})
 </script>
 
 <template>
@@ -56,16 +56,16 @@ const getAlertIcon = () => {
       <div class="lark-alert__content">
         <span v-if="showIcon" class="lark-alert__icon">
           <!-- .stop: event.stopPropagation() -->
-          <LarkIcon :icon="getAlertIcon()" @click.stop="visible = false" />
+          <LarkIcon :icon="alertIcon" @click.stop="visible = false" />
         </span>
 
         <div class="lark-alert__message">
           <p class="lark-alert__title">
-            <slot name="title">{{ title }}</slot>
+            {{ title }}
           </p>
 
           <p v-if="description" class="lark-alert__description">
-            <slot>{{ description }}</slot>
+            {{ description }}
           </p>
         </div>
       </div>

@@ -4,8 +4,19 @@
   "description": "",
   "private": true,
   "scripts": {
-    "format": "cd ./packages/react && pnpm format && cd ../vue && pnpm format",
-    "prepare": "husky"
+    "format": "pnpm format:react && pnpm format:vue",
+    "prepare": "husky",
+    "dev:react": "cd ./packages/react && pnpm dev",
+    "build:react": "cd ./packages/react && pnpm build",
+    "lint:react": "cd ./packages/react && pnpm lint",
+    "preview:react": "cd ./packages/react && pnpm preview",
+    "format:react": "cd ./packages/react && pnpm format",
+    "dev:vue": "cd ./packages/vue && pnpm dev",
+    "build:vue": "cd ./packages/vue && pnpm build",
+    "lint:vue": "cd ./packages/vue && pnpm lint",
+    "preview:vue": "cd ./packages/vue && pnpm preview",
+    "format:vue": "cd ./packages/vue && pnpm format",
+    "test": "cd ./packages/vue && pnpm test:unit"
   },
   "keywords": [
     "Component Library"

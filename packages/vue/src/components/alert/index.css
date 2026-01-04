@@ -96,6 +96,8 @@
   justify-content: center;
 }
 
+.lark-alert-fade-enter,
+.lark-alert-fade-exit-done,
 .lark-alert-fade-enter-from,
 .lark-alert-fade-leave-to {
   opacity: 0;

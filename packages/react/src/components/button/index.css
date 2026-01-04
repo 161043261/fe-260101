@@ -10,7 +10,10 @@
   text-align: center;
   outline: 0; /* none */
   margin: 0;
-  transition: all var(--lark-transition-duration-fast);
+  transition:
+    opacity var(--lark-transition-duration-fast),
+    background-color var(--lark-transition-duration-fast),
+    color var(--lark-transition-duration-fast);
   font-weight: 500;
   padding: 0.75rem 1.25rem;
   font-size: 0.875rem;
@@ -123,5 +126,17 @@
 
   & > :first-child.lark-icon {
     margin-right: 0.625rem;
+  }
+
+  &.lark-button--small {
+    transform: scale(0.75);
+  }
+
+  &.lark-button--medium {
+    transform: scale(1);
+  }
+
+  &.lark-button--large {
+    transform: scale(1.25);
   }
 }

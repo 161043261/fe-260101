@@ -2,6 +2,11 @@
 
 root=$(pwd)
 
+remove_pnpm_lock_files() {
+  rm -rf $root/packages/react/pnpm-lock.yaml
+  rm -rf $root/packages/vue/pnpm-lock.yaml
+}
+
 format_react() {
   cd $root/packages/react
   pnpm format
@@ -16,6 +21,8 @@ format_vue() {
 # format_vue
 
 # pnpm exec lint-staged
+
+remove_pnpm_lock_files
 
 case "$(uname -s)" in
   Linux*)

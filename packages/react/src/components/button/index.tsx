@@ -1,13 +1,14 @@
-import { useMemo, useRef, type PropsWithChildren } from 'react'
-import type { IProps } from './types'
-import classNames from 'classnames'
-import LarkIcon from '../icon'
+import { useMemo, useRef, type PropsWithChildren } from "react";
+import type { IProps } from "./types";
+import classNames from "classnames";
+import LarkIcon from "@/components/icon";
+import type { PropsWithClassName } from "@/types";
 
-function LarkButton(props: PropsWithChildren<IProps>) {
+function LarkButton(props: PropsWithClassName<PropsWithChildren<IProps>>) {
   const {
-    type = 'primary',
-    size = 'medium',
-    nativeType = 'button',
+    type = "primary",
+    size = "medium",
+    nativeType = "button",
     round,
     loading,
     circle,
@@ -15,7 +16,8 @@ function LarkButton(props: PropsWithChildren<IProps>) {
     plain,
     icon,
     children,
-  } = props
+    className,
+  } = props;
 
   const computedClass = useMemo(() => {
     return [
@@ -27,22 +29,26 @@ function LarkButton(props: PropsWithChildren<IProps>) {
       // props.disabled && 'is-disabled',
       // props.plain && 'is-plain',
       {
-        'is-round': round,
-        'is-circle': circle,
-        'is-disabled': disabled,
-        'is-plain': plain,
+        "is-round": round,
+        "is-circle": circle,
+        "is-disabled": disabled,
+        "is-plain": plain,
       },
-    ]
-  }, [props])
+    ];
+  }, [props]);
 
-  const ref = useRef<HTMLButtonElement | null>(null)
+  const ref = useRef<HTMLButtonElement | null>(null);
   return (
-    <button ref={ref} type={nativeType} className={classNames('lark-button', computedClass)}>
+    <button
+      ref={ref}
+      type={nativeType}
+      className={classNames(className, "lark-button", computedClass)}
+    >
       {loading && <LarkIcon icon="spinner" spin />}
       {icon && <LarkIcon icon={icon} />}
       <span>{children}</span>
     </button>
-  )
+  );
 }
 
-export default LarkButton
+export default LarkButton;
