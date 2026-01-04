@@ -96,31 +96,39 @@
   justify-content: center;
 }
 
-.lark-alert-fade-enter-from, /* Vue */
-.lark-alert-fade-leave-to /* Vue */ {
+/* ==================== Vue ==================== */
+.lark-alert-fade-enter-from,
+.lark-alert-fade-leave-to {
   opacity: 0;
 }
 
-.lark-alert-fade-enter-to, /* Vue */
-.lark-alert-fade-leave-from /* Vue */ {
+.lark-alert-fade-enter-active,
+.lark-alert-fade-leave-active {
+  transition: opacity 200ms;
+}
+
+.lark-alert-fade-enter-to,
+.lark-alert-fade-leave-from {
   opacity: 1;
 }
 
+/* ==================== React ==================== */
 .lark-alert-fade-enter {
   opacity: 0;
 }
 
-/* React, MUST after .lark-alert-fade-enter */
+/* React, MUST write after .lark-alert-fade-enter */
 .lark-alert-fade-enter-active {
   opacity: 1;
+  transition: opacity 200ms;
 }
 
 .lark-alert-fade-exit {
   opacity: 1;
 }
 
-/* React, MUST after .lark-alert-fade-exit */
+/* React, MUST write after .lark-alert-fade-exit */
 .lark-alert-fade-exit-active {
   opacity: 0;
-  transition: opacity 2000ms ease-out;
+  transition: opacity 200ms;
 }
