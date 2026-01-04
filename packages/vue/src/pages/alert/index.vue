@@ -3,7 +3,7 @@ import LarkAlert from '@/components/alert/index.vue'
 </script>
 
 <template>
-  <div class="alert-demo">
+  <div class="container">
     <h3>基础用法</h3>
     <LarkAlert title="Success 提示" type="success" effect="light" />
     <LarkAlert title="Info 提示" type="info" effect="light" />
@@ -37,17 +37,17 @@ import LarkAlert from '@/components/alert/index.vue'
 </template>
 
 <style scoped>
-.alert-demo {
-  padding: 20px;
-  width: 300px;
-}
+.container {
+  padding: 1.25rem;
+  width: 18.75rem;
 
-.alert-demo h3 {
-  margin: 20px 0 10px;
-  color: #333;
-}
+  h3 {
+    margin: 1.25rem 0 0.625rem;
+    color: #333;
+  }
 
-.alert-demo .lark-alert {
-  margin-bottom: 10px;
+  .lark-alert {
+    margin-bottom: 0.625rem;
+  }
 }
 </style>

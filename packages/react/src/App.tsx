@@ -1,15 +1,18 @@
-import { Link, Outlet } from 'react-router'
+import { Link, Outlet, useLocation } from "react-router";
 
 function App() {
+  const { pathname } = useLocation();
   return (
     <>
-      <div>
-        <Link to="/">Index</Link>
-      </div>
+      {pathname !== "/" && (
+        <div>
+          <Link to="/">Index</Link>
+        </div>
+      )}
       {/* Similar to vue-router <RouterView /> */}
       <Outlet />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

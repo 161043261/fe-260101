@@ -96,9 +96,9 @@
   justify-content: center;
 }
 
-.lark-alert-fade-enter,
-.lark-alert-fade-exit-done,
-.lark-alert-fade-enter-from,
-.lark-alert-fade-leave-to {
+.lark-alert-fade-enter, /* React */
+.lark-alert-fade-exit-done, /* React */
+.lark-alert-fade-enter-from, /* Vue */
+.lark-alert-fade-leave-to /* Vue */ {
   opacity: 0;
 }

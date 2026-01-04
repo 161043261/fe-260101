@@ -1,4 +1,3 @@
-cp ./packages/vue/src/postcss.config.js ./packages/react/src/
 cp ./packages/vue/src/index.css ./packages/react/src/
 
 cp ./packages/vue/src/components/alert/index.css       ./packages/react/src/components/alert/

@@ -1,11 +1,16 @@
-import { Link } from 'react-router'
+import routes from "@/router/routes";
+import { Link } from "react-router";
 
 function Index() {
   return (
-    <div>
-      <Link to="/button">Button</Link>
-    </div>
-  )
+    <ul>
+      {routes.map(({ path, id }) => (
+        <li key={path}>
+          <Link to={path}>{id}</Link>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
-export default Index
+export default Index;
