@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   border: 0.0625rem solid var(--color-lark-border-lighter);
-  transition: opacity var(--lark-transition-duration-fast);
+  transition: opacity 2s;
 
   .close-btn {
     position: absolute;
@@ -101,4 +101,11 @@
 .lark-alert-fade-enter-from, /* Vue */
 .lark-alert-fade-leave-to /* Vue */ {
   opacity: 0;
+}
+
+.lark-alert-fade-enter-done, /* React */
+.lark-alert-fade-exit, /* React */
+.lark-alert-fade-enter-to, /* Vue */
+.lark-alert-fade-leave-from /* Vue */ {
+  opacity: 1;
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { IProps } from "./types";
 import { CSSTransition } from "react-transition-group";
 import classNames from "classnames";
@@ -31,9 +31,9 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
     [type, effect, center],
   );
 
-  const [visible, setVisible] = useState(true);
+  const [display, setDisplay] = useState(true);
 
-  const getAlertIcon = useMemo(() => {
+  const alertIcon = useMemo(() => {
     switch (type) {
       case "error": {
         return "circle-xmark";
@@ -54,25 +54,41 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
   }, [type]);
 
   const handleClose = (e: MouseEvent) => {
-    setVisible(false);
+    setDisplay(false);
     onClose?.(e);
   };
 
+  const nodeRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <CSSTransition
+      nodeRef={nodeRef}
       classNames="lark-alert-fade"
-      in={visible}
+      in={display}
       unmountOnExit
       timeout={200}
+      {...(import.meta.env.DEV
+        ? {
+            onExit: () =>
+              console.log(`Exit ${new Date().toLocaleTimeString()}`),
+            onExiting: () =>
+              console.log(`Exiting ${new Date().toLocaleTimeString()}`),
+            onExited: () =>
+              console.log(`Exited ${new Date().toLocaleTimeString()}`),
+          }
+        : {})}
     >
-      <div className={classNames(className, "lark-alert", computedClass)}>
+      <div
+        className={classNames(className, "lark-alert", computedClass)}
+        ref={nodeRef}
+      >
         <div className="lark-alert__content">
           {showIcon && (
             <span className="lark-alert__icon">
               <LarkIcon
-                icon={getAlertIcon}
+                icon={alertIcon}
                 onClick={() => {
-                  setVisible(false);
+                  setDisplay(false);
                 }}
               />
             </span>

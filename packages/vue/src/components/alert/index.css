@@ -102,3 +102,10 @@
 .lark-alert-fade-leave-to /* Vue */ {
   opacity: 0;
 }
+
+.lark-alert-fade-enter-done, /* React */
+.lark-alert-fade-exit, /* React */
+.lark-alert-fade-enter-to, /* Vue */
+.lark-alert-fade-leave-from /* Vue */ {
+  opacity: 1;
+}

@@ -20,10 +20,10 @@ const computedClass = computed(() => {
   return [`lark-alert--${type}`, `lark-alert--${effect}`, { 'is-center': center }]
 })
 
-const visible = ref(true)
+const display = ref(true)
 
 const handleClose = (e: MouseEvent) => {
-  visible.value = false
+  display.value = false
   emit('close', e)
 }
 
@@ -52,11 +52,11 @@ const alertIcon = computed(() => {
   <!-- name 是 CSS 类选择器名的前缀, 默认值是 v- -->
   <!-- v-[enter | leave]-[from | active | to] -->
   <Transition name="lark-alert-fade">
-    <div class="lark-alert" :class="computedClass" v-show="visible">
+    <div class="lark-alert" :class="computedClass" v-if="display">
       <div class="lark-alert__content">
         <span v-if="showIcon" class="lark-alert__icon">
           <!-- .stop: event.stopPropagation() -->
-          <LarkIcon :icon="alertIcon" @click.stop="visible = false" />
+          <LarkIcon :icon="alertIcon" @click.stop="display = false" />
         </span>
 
         <div class="lark-alert__message">
