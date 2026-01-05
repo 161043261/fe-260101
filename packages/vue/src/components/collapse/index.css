@@ -1,2 +1,32 @@
-.lark {
+.lark-collapse-item {
+  box-sizing: border-box;
+
+  .lark-collapse-item__title {
+    position: relative;
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 0.0625rem solid var(--color-lark-border);
+    box-sizing: border-box;
+
+    &:only-child {
+      position: absolute;
+      right: 0.625rem;
+      top: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    &.is-active {
+      &:only-child {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .lark-collapse-item__content {
+    font-size: 0.8125rem;
+    color: var(--color-lark-text-primary);
+    line-height: 1.625rem;
+    box-sizing: border-box;
+    border-bottom: 0.0625rem solid var(--color-lark-border);
+  }
 }

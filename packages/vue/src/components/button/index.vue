@@ -39,7 +39,7 @@ defineExpose({
     <LarkIcon icon="spinner" v-if="loading" spin />
     <LarkIcon :icon="icon" v-if="icon" />
     <span>
-      <slot />
+      <slot></slot>
     </span>
   </button>
 </template>

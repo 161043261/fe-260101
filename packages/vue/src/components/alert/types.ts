@@ -13,9 +13,8 @@ export interface IProps {
 }
 
 export interface IEmits {
-  // key: 事件名
-  // value: 事件回调函数的参数, 具名元组
-  close: [e: MouseEvent]
+  // (eventName, ...args): void
+  (eventName: 'close', e: MouseEvent): void
 }
 
 export interface IExpose {

@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<IProps>(), {
 // const { type, closable, center, showIcon, effect } = toRefs(props)
 const { type, closable, center, showIcon, effect } = props
 
-const emit = defineEmits<IEmits>()
+const emits = defineEmits<IEmits>()
 
 const computedClass = computed(() => {
   return [`lark-alert--${type}`, `lark-alert--${effect}`, { 'is-center': center }]
@@ -24,7 +24,7 @@ const display = ref(true)
 
 const handleClose = (e: MouseEvent) => {
   display.value = false
-  emit('close', e)
+  emits('close', e)
 }
 
 const alertIcon = computed(() => {
