@@ -1,5 +1,5 @@
 function uuid() {
-  return crypto.randomUUID();
+  return crypto.randomUUID()
 }
 
-export default uuid;
+export default uuid

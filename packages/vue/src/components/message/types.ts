@@ -6,8 +6,8 @@ export interface IProps {
   duration?: number
   showClose?: boolean
   type?: 'success' | 'warning' | 'danger' | 'info'
-  zIndex?: number;
-  offset?: number;
+  zIndex?: number
+  offset?: number
   onClose: () => void
 }
 

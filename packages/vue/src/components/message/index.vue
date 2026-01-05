@@ -15,12 +15,11 @@ const height = ref(0)
 
 
 const getTopSiblingBottomOffset = (id: string) => {
-  const index = 
+  const index =
 }
 
 
 const topOffset = computed
-
 </script>
 
 <template>
