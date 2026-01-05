@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { TName } from '@/components/collapse/types'
-import LarkCollapse from '@/components/collapse/index.vue'
-import LarkCollapseItem from '@/components/collapse/item/index.vue'
+import { ref } from "vue";
+import type { TName } from "@/components/collapse/types";
+import LarkCollapse from "@/components/collapse/index.vue";
+import LarkCollapseItem from "@/components/collapse/item/index.vue";
 
-const activeBasic = ref<TName[]>(['1'])
-const activeAccordion = ref<TName[]>(['a'])
-const activeWithDisabled = ref<TName[]>(['x'])
+const activeBasic = ref<TName[]>(["1"]);
+const activeAccordion = ref<TName[]>(["a"]);
+const activeWithDisabled = ref<TName[]>(["x"]);
 
 const onChange = (names: TName[]) => {
-  console.log('[collapse change]', names)
-}
+  console.log("[collapse change]", names);
+};
 </script>
 
 <template>
@@ -83,29 +83,29 @@ const onChange = (names: TName[]) => {
 .container {
   padding: 1.25rem;
   max-width: 42rem;
-}
 
-.container h3 {
-  margin: 1.25rem 0 0.625rem;
-  font-size: 1rem;
-  color: #333;
-}
+  h3 {
+    margin: 1.25rem 0 0.625rem;
+    font-size: 1rem;
+    color: #333;
+  }
 
-.meta {
-  margin-bottom: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #666;
-}
+  .meta {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #666;
+  }
 
-.content {
-  padding: 0.75rem 0;
-}
+  .content {
+    padding: 0.75rem 0;
 
-.content p {
-  margin: 0 0 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  color: #333;
+    p {
+      margin: 0 0 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      color: #333;
+    }
+  }
 }
 </style>

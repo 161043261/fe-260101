@@ -1,6 +1,14 @@
 .lark-collapse-item {
   box-sizing: border-box;
 
+  &.is-disabled {
+    .lark-collapse-item__title {
+      & > .lark-icon {
+        cursor: not-allowed;
+      }
+    }
+  }
+
   .lark-collapse-item__title {
     display: flex;
     align-items: center;
@@ -15,6 +23,7 @@
       right: 0.625rem;
       /* top: 0.5rem; */
       transition: transform 0.3s;
+      cursor: pointer;
     }
 
     &.is-active > .lark-icon {
