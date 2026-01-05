@@ -34,88 +34,88 @@ const Container = styled.div`
 `;
 
 export default function CollapseDemo() {
-  const [activeBasic, setActiveBasic] = useState<TName[]>(["1"]);
-  const [activeAccordion, setActiveAccordion] = useState<TName[]>(["a"]);
-  const [activeWithDisabled, setActiveWithDisabled] = useState<TName[]>(["x"]);
+  const [basicActive, setBasicActive] = useState<TName[]>(["1"]);
+  const [accordionActive, setAccordionActive] = useState<TName[]>(["a"]);
+  const [disabledActive, setDisabledActive] = useState<TName[]>(["x"]);
 
-  const onChange = (names: TName[]) => {
+  const handleChange = (names: TName[]) => {
     console.log("[collapse change]", names);
   };
 
   return (
     <Container>
-      <h3>基础用法（受控）</h3>
-      <div className="meta">当前展开：{JSON.stringify(activeBasic)}</div>
+      <h3>Basic Usage (Controlled)</h3>
+      <div className="meta">Active panels: {JSON.stringify(basicActive)}</div>
       <LarkCollapse
-        activeNames={activeBasic}
+        activeNames={basicActive}
         onChange={(v) => {
-          setActiveBasic(v);
-          onChange(v);
+          setBasicActive(v);
+          handleChange(v);
         }}
       >
-        <LarkCollapseItem name="1" title="标题 1">
+        <LarkCollapseItem name="1" title="Panel 1">
           <div className="content">
-            <p>这里是内容区。</p>
-            <p>可以放任意内容，比如表单、按钮、提示等。</p>
+            <p>This is the content area.</p>
+            <p>You can place any content here, such as forms, buttons, or tips.</p>
           </div>
         </LarkCollapseItem>
-        <LarkCollapseItem name="2" title="标题 2">
+        <LarkCollapseItem name="2" title="Panel 2">
           <div className="content">
-            <p>支持多行文本。</p>
-            <p>也支持插槽中的任意组件。</p>
+            <p>Supports multi-line text.</p>
+            <p>Also supports any components within the slot.</p>
           </div>
         </LarkCollapseItem>
-        <LarkCollapseItem name="3" title="标题 3">
+        <LarkCollapseItem name="3" title="Panel 3">
           <div className="content">
-            <p>第三项内容。</p>
+            <p>Content of the third panel.</p>
           </div>
         </LarkCollapseItem>
       </LarkCollapse>
 
-      <h3>手风琴模式（一次只展开一个）</h3>
-      <div className="meta">当前展开：{JSON.stringify(activeAccordion)}</div>
+      <h3>Accordion Mode (Single Expand)</h3>
+      <div className="meta">Active panels: {JSON.stringify(accordionActive)}</div>
       <LarkCollapse
-        activeNames={activeAccordion}
+        activeNames={accordionActive}
         accordion
         onChange={(v) => {
-          setActiveAccordion(v);
-          onChange(v);
+          setAccordionActive(v);
+          handleChange(v);
         }}
       >
-        <LarkCollapseItem name="a" title="手风琴 A">
+        <LarkCollapseItem name="a" title="Accordion A">
           <div className="content">
-            <p>手风琴模式下，数组里通常只有 0 或 1 个值。</p>
+            <p>In accordion mode, only one panel can be expanded at a time.</p>
           </div>
         </LarkCollapseItem>
-        <LarkCollapseItem name="b" title="手风琴 B">
+        <LarkCollapseItem name="b" title="Accordion B">
           <div className="content">
-            <p>点击切换当前展开项。</p>
+            <p>Click to toggle the active panel.</p>
           </div>
         </LarkCollapseItem>
-        <LarkCollapseItem name="c" title="手风琴 C">
+        <LarkCollapseItem name="c" title="Accordion C">
           <div className="content">
-            <p>第三项内容。</p>
+            <p>Content of the third panel.</p>
           </div>
         </LarkCollapseItem>
       </LarkCollapse>
 
-      <h3>禁用项</h3>
-      <div className="meta">当前展开：{JSON.stringify(activeWithDisabled)}</div>
+      <h3>Disabled Items</h3>
+      <div className="meta">Active panels: {JSON.stringify(disabledActive)}</div>
       <LarkCollapse
-        activeNames={activeWithDisabled}
+        activeNames={disabledActive}
         onChange={(v) => {
-          setActiveWithDisabled(v);
-          onChange(v);
+          setDisabledActive(v);
+          handleChange(v);
         }}
       >
-        <LarkCollapseItem name="x" title="可展开项">
+        <LarkCollapseItem name="x" title="Expandable Item">
           <div className="content">
-            <p>这项可以正常展开/收起。</p>
+            <p>This item can be expanded and collapsed normally.</p>
           </div>
         </LarkCollapseItem>
-        <LarkCollapseItem name="y" title="禁用项（点击无效）" disabled>
+        <LarkCollapseItem name="y" title="Disabled Item (Click Ignored)" disabled>
           <div className="content">
-            <p>这项被禁用，点击标题不会触发展开收起。</p>
+            <p>This item is disabled. Clicking the header will not toggle it.</p>
           </div>
         </LarkCollapseItem>
       </LarkCollapse>

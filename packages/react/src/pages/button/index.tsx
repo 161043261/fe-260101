@@ -17,10 +17,10 @@ const Container = styled.div`
   }
 `
 
-function Index() {
+function ButtonDemo() {
   return (
     <Container>
-      <h3>按钮类型</h3>
+      <h3>Button Types</h3>
       <div className="container-row">
         <LarkButton type="primary">Primary</LarkButton>
         <LarkButton type="success">Success</LarkButton>
@@ -29,45 +29,25 @@ function Index() {
         <LarkButton type="danger">Danger</LarkButton>
       </div>
 
-      <h3>朴素按钮</h3>
+      <h3>Plain Buttons</h3>
       <div className="container-row">
-        <LarkButton type="primary" plain>
-          Primary
-        </LarkButton>
-        <LarkButton type="success" plain>
-          Success
-        </LarkButton>
-        <LarkButton type="info" plain>
-          Info
-        </LarkButton>
-        <LarkButton type="warning" plain>
-          Warning
-        </LarkButton>
-        <LarkButton type="danger" plain>
-          Danger
-        </LarkButton>
+        <LarkButton type="primary" plain>Primary</LarkButton>
+        <LarkButton type="success" plain>Success</LarkButton>
+        <LarkButton type="info" plain>Info</LarkButton>
+        <LarkButton type="warning" plain>Warning</LarkButton>
+        <LarkButton type="danger" plain>Danger</LarkButton>
       </div>
 
-      <h3>圆角按钮</h3>
+      <h3>Round Buttons</h3>
       <div className="container-row">
-        <LarkButton type="primary" round>
-          Primary
-        </LarkButton>
-        <LarkButton type="success" round>
-          Success
-        </LarkButton>
-        <LarkButton type="info" round>
-          Info
-        </LarkButton>
-        <LarkButton type="warning" round>
-          Warning
-        </LarkButton>
-        <LarkButton type="danger" round>
-          Danger
-        </LarkButton>
+        <LarkButton type="primary" round>Primary</LarkButton>
+        <LarkButton type="success" round>Success</LarkButton>
+        <LarkButton type="info" round>Info</LarkButton>
+        <LarkButton type="warning" round>Warning</LarkButton>
+        <LarkButton type="danger" round>Danger</LarkButton>
       </div>
 
-      <h3>圆形按钮</h3>
+      <h3>Circle Buttons</h3>
       <div className="container-row">
         <LarkButton type="primary" circle icon="search" />
         <LarkButton type="success" circle icon="check" />
@@ -76,53 +56,33 @@ function Index() {
         <LarkButton type="danger" circle icon="remove" />
       </div>
 
-      <h3>按钮尺寸</h3>
+      <h3>Button Sizes</h3>
       <div className="container-row">
-        <LarkButton type="primary" size="large">
-          Large
-        </LarkButton>
-        <LarkButton type="primary" size="medium">
-          Medium
-        </LarkButton>
-        <LarkButton type="primary" size="small">
-          Small
-        </LarkButton>
+        <LarkButton type="primary" size="large">Large</LarkButton>
+        <LarkButton type="primary" size="medium">Medium</LarkButton>
+        <LarkButton type="primary" size="small">Small</LarkButton>
       </div>
 
-      <h3>禁用状态</h3>
+      <h3>Disabled State</h3>
       <div className="container-row">
-        <LarkButton type="primary" disabled>
-          Disabled
-        </LarkButton>
-        <LarkButton type="success" disabled>
-          Disabled
-        </LarkButton>
+        <LarkButton type="primary" disabled>Disabled</LarkButton>
+        <LarkButton type="success" disabled>Disabled</LarkButton>
       </div>
 
-      <h3>加载状态</h3>
+      <h3>Loading State</h3>
       <div className="container-row">
-        <LarkButton type="primary" loading>
-          Loading
-        </LarkButton>
-        <LarkButton type="success" loading>
-          Loading
-        </LarkButton>
+        <LarkButton type="primary" loading>Loading</LarkButton>
+        <LarkButton type="success" loading>Loading</LarkButton>
       </div>
 
-      <h3>带图标</h3>
+      <h3>With Icons</h3>
       <div className="container-row">
-        <LarkButton type="primary" icon="edit">
-          编辑
-        </LarkButton>
-        <LarkButton type="success" icon="check">
-          确认
-        </LarkButton>
-        <LarkButton type="danger" icon="remove">
-          删除
-        </LarkButton>
+        <LarkButton type="primary" icon="edit">Edit</LarkButton>
+        <LarkButton type="success" icon="check">Confirm</LarkButton>
+        <LarkButton type="danger" icon="remove">Delete</LarkButton>
       </div>
     </Container>
   )
 }
 
-export default Index
+export default ButtonDemo
