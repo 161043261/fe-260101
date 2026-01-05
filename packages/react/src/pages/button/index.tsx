@@ -1,5 +1,5 @@
-import LarkButton from "@/components/button";
-import styled from "styled-components";
+import LarkButton from '@/components/button'
+import styled from 'styled-components'
 
 const Container = styled.div`
   padding: 1.25rem;
@@ -15,7 +15,7 @@ const Container = styled.div`
     gap: 0.625rem;
     align-items: center;
   }
-`;
+`
 
 function Index() {
   return (
@@ -122,7 +122,7 @@ function Index() {
         </LarkButton>
       </div>
     </Container>
-  );
+  )
 }
 
-export default Index;
+export default Index

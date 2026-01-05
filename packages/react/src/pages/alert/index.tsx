@@ -1,5 +1,5 @@
-import LarkAlert from "@/components/alert/index";
-import styled from "styled-components";
+import LarkAlert from '@/components/alert/index'
+import styled from 'styled-components'
 
 const Container = styled.div`
   padding: 1.25rem;
@@ -12,7 +12,7 @@ const Container = styled.div`
   .lark-alert {
     margin-bottom: 0.625rem;
   }
-`;
+`
 
 function AlertDemo() {
   return (
@@ -47,22 +47,12 @@ function AlertDemo() {
       <LarkAlert title="居中显示" type="info" effect="light" center />
 
       <h3>自定义关闭文字</h3>
-      <LarkAlert
-        title="自定义关闭"
-        type="warning"
-        effect="light"
-        closeText="知道了"
-      />
+      <LarkAlert title="自定义关闭" type="warning" effect="light" closeText="知道了" />
 
       <h3>不可关闭</h3>
-      <LarkAlert
-        title="不可关闭的提示"
-        type="error"
-        effect="light"
-        closable={false}
-      />
+      <LarkAlert title="不可关闭的提示" type="error" effect="light" closable={false} />
     </Container>
-  );
+  )
 }
 
-export default AlertDemo;
+export default AlertDemo

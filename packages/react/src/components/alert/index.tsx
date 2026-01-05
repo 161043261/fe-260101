@@ -1,15 +1,15 @@
-import { useMemo, useRef, useState } from "react";
-import type { IProps } from "./types";
-import { CSSTransition } from "react-transition-group";
-import classNames from "classnames";
-import LarkIcon from "@/components/icon";
-import type { PropsWithClassName } from "@/types";
-import type { MouseEvent } from "react";
+import { useMemo, useRef, useState } from 'react'
+import type { IProps } from './types'
+import { CSSTransition } from 'react-transition-group'
+import classNames from 'classnames'
+import LarkIcon from '@/components/icon'
+import type { PropsWithClassName } from '@/types'
+import type { MouseEvent } from 'react'
 
 function LarkAlert(props: PropsWithClassName<IProps>) {
   const {
     closable = true,
-    effect = "light",
+    effect = 'light',
     type,
     center,
     showIcon,
@@ -18,47 +18,47 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
     closeText,
     className,
     onClose,
-  } = props;
+  } = props
 
   const computedClass = useMemo(
     () => [
       `lark-alert--${type}`,
       `lark-alert--${effect}`,
       {
-        "is-center": center,
+        'is-center': center,
       },
     ],
     [type, effect, center],
-  );
+  )
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(true)
 
   const alertIcon = useMemo(() => {
     switch (type) {
-      case "error": {
-        return "circle-xmark";
+      case 'error': {
+        return 'circle-xmark'
       }
-      case "info": {
-        return "circle-info";
+      case 'info': {
+        return 'circle-info'
       }
-      case "success": {
-        return "circle-check";
+      case 'success': {
+        return 'circle-check'
       }
-      case "warning": {
-        return "circle-exclamation";
+      case 'warning': {
+        return 'circle-exclamation'
       }
       default: {
-        return "circle-info";
+        return 'circle-info'
       }
     }
-  }, [type]);
+  }, [type])
 
   const handleClose = (e: MouseEvent) => {
-    setDisplay(false);
-    onClose?.(e);
-  };
+    setDisplay(false)
+    onClose?.(e)
+  }
 
-  const nodeRef = useRef<HTMLDivElement | null>(null);
+  const nodeRef = useRef<HTMLDivElement | null>(null)
 
   return (
     <CSSTransition
@@ -69,26 +69,20 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
       timeout={200}
       {...(import.meta.env.DEV
         ? {
-            onExit: () =>
-              console.log(`Exit ${new Date().toLocaleTimeString()}`),
-            onExiting: () =>
-              console.log(`Exiting ${new Date().toLocaleTimeString()}`),
-            onExited: () =>
-              console.log(`Exited ${new Date().toLocaleTimeString()}`),
+            onExit: () => console.log(`Exit ${new Date().toLocaleTimeString()}`),
+            onExiting: () => console.log(`Exiting ${new Date().toLocaleTimeString()}`),
+            onExited: () => console.log(`Exited ${new Date().toLocaleTimeString()}`),
           }
         : {})}
     >
-      <div
-        className={classNames(className, "lark-alert", computedClass)}
-        ref={nodeRef}
-      >
+      <div className={classNames(className, 'lark-alert', computedClass)} ref={nodeRef}>
         <div className="lark-alert__content">
           {showIcon && (
             <span className="lark-alert__icon">
               <LarkIcon
                 icon={alertIcon}
                 onClick={() => {
-                  setDisplay(false);
+                  setDisplay(false)
                 }}
               />
             </span>
@@ -97,9 +91,7 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
           <div className="lark-alert__message">
             <p className="lark-alert__title">{title}</p>
 
-            {description && (
-              <p className="lark-alert__description">{description}</p>
-            )}
+            {description && <p className="lark-alert__description">{description}</p>}
           </div>
         </div>
 
@@ -109,15 +101,11 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
               {closeText}
             </div>
           ) : (
-            <LarkIcon
-              icon="xmark"
-              onClick={handleClose}
-              className="close-btn"
-            />
+            <LarkIcon icon="xmark" onClick={handleClose} className="close-btn" />
           ))}
       </div>
     </CSSTransition>
-  );
+  )
 }
 
-export default LarkAlert;
+export default LarkAlert

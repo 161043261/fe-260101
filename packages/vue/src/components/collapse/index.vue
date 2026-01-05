@@ -28,9 +28,7 @@ const setActiveNames = (names: TName[]) => {
 
 const handleClick = (name: TName) => {
   if (accordion.value) {
-    setActiveNames(
-      activeNames.value.length === 0 || activeNames.value[0] !== name ? [name] : []
-    )
+    setActiveNames(activeNames.value.length === 0 || activeNames.value[0] !== name ? [name] : [])
     return
   }
 

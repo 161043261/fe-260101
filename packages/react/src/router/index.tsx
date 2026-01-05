@@ -1,13 +1,13 @@
-import App from "@/App";
-import { createBrowserRouter } from "react-router";
-import routes from "./routes";
+import App from '@/App'
+import { createBrowserRouter } from 'react-router'
+import routes from './routes'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     Component: App,
     children: routes,
   },
-]);
+])
 
-export default router;
+export default router

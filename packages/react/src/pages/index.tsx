@@ -1,5 +1,5 @@
-import routes from "@/router/routes";
-import { Link } from "react-router";
+import routes from '@/router/routes'
+import { Link } from 'react-router'
 
 function Index() {
   return (
@@ -10,7 +10,7 @@ function Index() {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
-export default Index;
+export default Index
