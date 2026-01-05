@@ -2,25 +2,26 @@
 import type { IProps } from './types'
 import { KEY } from '../constants'
 import type { IContext } from '../types'
-import { computed, inject } from 'vue'
+import { computed, inject, toRefs } from 'vue'
 import LarkIcon from '@/components/icon/index.vue'
 
 defineOptions({
   name: 'LarkCollapseItem',
 })
 
-const { disabled, name } = defineProps<IProps>()
+const props = defineProps<IProps>()
+const { disabled, name } = toRefs(props)
 const context = inject<IContext>(KEY)
 
 const isActive = computed(() => {
-  return context?.activeNames.value.includes(name)
+  return context?.activeNames.value.includes(name.value)
 })
 
 const handleClick = () => {
-  if (disabled) {
+  if (disabled.value) {
     return
   }
-  context?.handleClick(name)
+  context?.handleClick(name.value)
 }
 </script>
 

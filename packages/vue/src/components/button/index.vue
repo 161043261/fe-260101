@@ -12,17 +12,15 @@ const props = withDefaults(defineProps<IProps>(), {
   size: 'medium',
 })
 
-const { type, size, round, loading, circle, disabled, plain } = props
-
 const computedClass = computed(() => {
   return [
-    `lark-button--${type}`,
-    `lark-button--${size}`,
+    `lark-button--${props.type}`,
+    `lark-button--${props.size}`,
     {
-      'is-round': round, // Seems like it will be compiled to props.round since Vue 3.5
-      'is-circle': circle,
-      'is-disabled': disabled,
-      'is-plain': plain,
+      'is-round': props.round,
+      'is-circle': props.circle,
+      'is-disabled': props.disabled,
+      'is-plain': props.plain,
     },
   ]
 })

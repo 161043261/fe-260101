@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, toRefs } from 'vue'
 import type { IEmits, IProps } from './types'
 import LarkIcon from '@/components/icon/index.vue'
 
@@ -11,13 +11,13 @@ const props = withDefaults(defineProps<IProps>(), {
   closable: true,
   effect: 'light',
 })
-// const { type, closable, center, showIcon, effect } = toRefs(props)
-const { type, closable, center, showIcon, effect } = props
+
+const { type, center, effect } = toRefs(props)
 
 const emits = defineEmits<IEmits>()
 
 const computedClass = computed(() => {
-  return [`lark-alert--${type}`, `lark-alert--${effect}`, { 'is-center': center }]
+  return [`lark-alert--${type.value}`, `lark-alert--${effect.value}`, { 'is-center': center }]
 })
 
 const display = ref(true)
@@ -28,7 +28,7 @@ const handleClose = (e: MouseEvent) => {
 }
 
 const alertIcon = computed(() => {
-  switch (type) {
+  switch (type.value) {
     case 'error': {
       return 'circle-xmark'
     }
