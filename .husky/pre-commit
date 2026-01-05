@@ -2,10 +2,6 @@
 
 root=$(pwd)
 
-cp_styles() {
-  ./scripts/cp_styles.sh
-}
-
 remove_pnpm_lock_files() {
   rm -rf $root/packages/react/pnpm-lock.yaml
   rm -rf $root/packages/vue/pnpm-lock.yaml
@@ -26,7 +22,6 @@ format_vue() {
 
 # pnpm exec lint-staged
 
-cp_styles
 remove_pnpm_lock_files
 
 case "$(uname -s)" in

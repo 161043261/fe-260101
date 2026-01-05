@@ -1,5 +1,5 @@
 import type { IProps } from './types'
 
-function Index(props: IProps) {}
+function LarkCollapse(props: IProps) {}
 
-export default Index
+export default LarkCollapse
