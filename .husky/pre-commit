@@ -17,6 +17,11 @@ format_vue() {
   pnpm format
 }
 
+format_styles() {
+  cd $root
+  pnpm format:styles
+}
+
 # format_react
 # format_vue
 
@@ -28,6 +33,7 @@ case "$(uname -s)" in
   Linux*)
     format_react
     format_vue
+    format_styles
     ;;
   *)
     pnpm exec lint-staged
