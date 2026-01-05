@@ -117,7 +117,7 @@
   opacity: 0;
 }
 
-/* React, MUST write after .lark-alert-fade-enter */
+/* React, MUST write after .[prefix]-enter */
 .lark-alert-fade-enter-active {
   opacity: 1;
   transition: opacity 200ms;
@@ -127,7 +127,7 @@
   opacity: 1;
 }
 
-/* React, MUST write after .lark-alert-fade-exit */
+/* React, MUST write after .[prefix]-exit */
 .lark-alert-fade-exit-active {
   opacity: 0;
   transition: opacity 200ms;
