@@ -28,19 +28,21 @@ const setActiveNames = (names: TName[]) => {
 
 const handleClick = (name: TName) => {
   if (accordion.value) {
-    setActiveNames(activeNames.value[0] === name ? [] : [name])
+    setActiveNames(
+      activeNames.value.length === 0 || activeNames.value[0] !== name ? [name] : []
+    )
     return
   }
 
   if (activeNames.value.includes(name)) {
-    setActiveNames([...activeNames.value, name])
-  } else {
     setActiveNames(activeNames.value.filter((item) => item !== name))
+  } else {
+    setActiveNames([...activeNames.value, name])
   }
 }
 
 provide<IContext>(KEY, {
-  activeNames: activeNames.value,
+  activeNames,
   handleClick,
 })
 </script>

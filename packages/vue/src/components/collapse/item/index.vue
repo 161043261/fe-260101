@@ -13,7 +13,7 @@ const { disabled, name } = defineProps<IProps>()
 const context = inject<IContext>(KEY)
 
 const isActive = computed(() => {
-  return context?.activeNames.includes(name)
+  return context?.activeNames.value.includes(name)
 })
 
 const handleClick = () => {
@@ -27,7 +27,7 @@ const handleClick = () => {
 <template>
   <div class="lark-collapse-item" :class="{ 'is-disabled': disabled }">
     <div class="lark-collapse-item__title" :class="{ 'is-active': isActive }" @click="handleClick">
-      {{ title }}
+      <span>{{ title }}</span>
       <LarkIcon icon="angle-right" />
     </div>
 

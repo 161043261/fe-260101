@@ -1,8 +1,9 @@
+import type { Ref } from 'vue'
 import type { TName } from './item/types'
 export type { TName } from './item/types'
 
 export interface IContext {
-  activeNames: TName[]
+  activeNames: Ref<TName[]>
   handleClick: (name: TName) => void
 }
 

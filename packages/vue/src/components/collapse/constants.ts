@@ -1,5 +1,1 @@
-if (import.meta.env.DEV) {
-  console.log(import.meta.url)
-}
-
-export const KEY = Symbol()
+export const KEY = Symbol(new URL('./', import.meta.url).pathname)
