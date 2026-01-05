@@ -1,8 +1,8 @@
-import { useMemo, type CSSProperties, type ReactElement } from "react";
+import { useMemo, type CSSProperties, type ReactElement } from 'react'
 
 export function useVisibilityHidden<
   T extends {
-    style: CSSProperties;
+    style: CSSProperties
   },
 >(visible: boolean, element: ReactElement<T>) {
   return useMemo(() => {
@@ -12,16 +12,16 @@ export function useVisibilityHidden<
         ...element.props,
         style: {
           ...element.props.style,
-          visibility: visible ? "inherit" : "hidden",
+          visibility: visible ? 'inherit' : 'hidden',
         },
       },
-    };
-  }, [visible, element]);
+    }
+  }, [visible, element])
 }
 
 export function useDisplayNone<
   T extends {
-    style: CSSProperties;
+    style: CSSProperties
   },
 >(visible: boolean, element: ReactElement<T>) {
   return useMemo(() => {
@@ -31,9 +31,9 @@ export function useDisplayNone<
         ...element.props,
         style: {
           ...element.props.style,
-          display: visible ? "inherit" : "none",
+          display: visible ? 'inherit' : 'none',
         },
       },
-    };
-  }, [visible, element]);
+    }
+  }, [visible, element])
 }

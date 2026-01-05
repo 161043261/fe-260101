@@ -31,20 +31,40 @@ function ButtonDemo() {
 
       <h3>Plain Buttons</h3>
       <div className="container-row">
-        <LarkButton type="primary" plain>Primary</LarkButton>
-        <LarkButton type="success" plain>Success</LarkButton>
-        <LarkButton type="info" plain>Info</LarkButton>
-        <LarkButton type="warning" plain>Warning</LarkButton>
-        <LarkButton type="danger" plain>Danger</LarkButton>
+        <LarkButton type="primary" plain>
+          Primary
+        </LarkButton>
+        <LarkButton type="success" plain>
+          Success
+        </LarkButton>
+        <LarkButton type="info" plain>
+          Info
+        </LarkButton>
+        <LarkButton type="warning" plain>
+          Warning
+        </LarkButton>
+        <LarkButton type="danger" plain>
+          Danger
+        </LarkButton>
       </div>
 
       <h3>Round Buttons</h3>
       <div className="container-row">
-        <LarkButton type="primary" round>Primary</LarkButton>
-        <LarkButton type="success" round>Success</LarkButton>
-        <LarkButton type="info" round>Info</LarkButton>
-        <LarkButton type="warning" round>Warning</LarkButton>
-        <LarkButton type="danger" round>Danger</LarkButton>
+        <LarkButton type="primary" round>
+          Primary
+        </LarkButton>
+        <LarkButton type="success" round>
+          Success
+        </LarkButton>
+        <LarkButton type="info" round>
+          Info
+        </LarkButton>
+        <LarkButton type="warning" round>
+          Warning
+        </LarkButton>
+        <LarkButton type="danger" round>
+          Danger
+        </LarkButton>
       </div>
 
       <h3>Circle Buttons</h3>
@@ -58,28 +78,48 @@ function ButtonDemo() {
 
       <h3>Button Sizes</h3>
       <div className="container-row">
-        <LarkButton type="primary" size="large">Large</LarkButton>
-        <LarkButton type="primary" size="medium">Medium</LarkButton>
-        <LarkButton type="primary" size="small">Small</LarkButton>
+        <LarkButton type="primary" size="large">
+          Large
+        </LarkButton>
+        <LarkButton type="primary" size="medium">
+          Medium
+        </LarkButton>
+        <LarkButton type="primary" size="small">
+          Small
+        </LarkButton>
       </div>
 
       <h3>Disabled State</h3>
       <div className="container-row">
-        <LarkButton type="primary" disabled>Disabled</LarkButton>
-        <LarkButton type="success" disabled>Disabled</LarkButton>
+        <LarkButton type="primary" disabled>
+          Disabled
+        </LarkButton>
+        <LarkButton type="success" disabled>
+          Disabled
+        </LarkButton>
       </div>
 
       <h3>Loading State</h3>
       <div className="container-row">
-        <LarkButton type="primary" loading>Loading</LarkButton>
-        <LarkButton type="success" loading>Loading</LarkButton>
+        <LarkButton type="primary" loading>
+          Loading
+        </LarkButton>
+        <LarkButton type="success" loading>
+          Loading
+        </LarkButton>
       </div>
 
       <h3>With Icons</h3>
       <div className="container-row">
-        <LarkButton type="primary" icon="edit">Edit</LarkButton>
-        <LarkButton type="success" icon="check">Confirm</LarkButton>
-        <LarkButton type="danger" icon="remove">Delete</LarkButton>
+        <LarkButton type="primary" icon="edit">
+          Edit
+        </LarkButton>
+        <LarkButton type="success" icon="check">
+          Confirm
+        </LarkButton>
+        <LarkButton type="danger" icon="remove">
+          Delete
+        </LarkButton>
       </div>
     </Container>
   )

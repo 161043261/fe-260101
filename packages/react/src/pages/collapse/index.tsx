@@ -1,8 +1,8 @@
-import { useState } from "react";
-import type { TName } from "@/components/collapse/types";
-import LarkCollapse from "@/components/collapse";
-import LarkCollapseItem from "@/components/collapse/item";
-import styled from "styled-components";
+import { useState } from 'react'
+import type { TName } from '@/components/collapse/types'
+import LarkCollapse from '@/components/collapse'
+import LarkCollapseItem from '@/components/collapse/item'
+import styled from 'styled-components'
 
 const Container = styled.div`
   padding: 1.25rem;
@@ -31,16 +31,16 @@ const Container = styled.div`
       color: #333;
     }
   }
-`;
+`
 
 export default function CollapseDemo() {
-  const [basicActive, setBasicActive] = useState<TName[]>(["1"]);
-  const [accordionActive, setAccordionActive] = useState<TName[]>(["a"]);
-  const [disabledActive, setDisabledActive] = useState<TName[]>(["x"]);
+  const [basicActive, setBasicActive] = useState<TName[]>(['1'])
+  const [accordionActive, setAccordionActive] = useState<TName[]>(['a'])
+  const [disabledActive, setDisabledActive] = useState<TName[]>(['x'])
 
   const handleChange = (names: TName[]) => {
-    console.log("[collapse change]", names);
-  };
+    console.log('[collapse change]', names)
+  }
 
   return (
     <Container>
@@ -49,8 +49,8 @@ export default function CollapseDemo() {
       <LarkCollapse
         activeNames={basicActive}
         onChange={(v) => {
-          setBasicActive(v);
-          handleChange(v);
+          setBasicActive(v)
+          handleChange(v)
         }}
       >
         <LarkCollapseItem name="1" title="Panel 1">
@@ -78,8 +78,8 @@ export default function CollapseDemo() {
         activeNames={accordionActive}
         accordion
         onChange={(v) => {
-          setAccordionActive(v);
-          handleChange(v);
+          setAccordionActive(v)
+          handleChange(v)
         }}
       >
         <LarkCollapseItem name="a" title="Accordion A">
@@ -104,8 +104,8 @@ export default function CollapseDemo() {
       <LarkCollapse
         activeNames={disabledActive}
         onChange={(v) => {
-          setDisabledActive(v);
-          handleChange(v);
+          setDisabledActive(v)
+          handleChange(v)
         }}
       >
         <LarkCollapseItem name="x" title="Expandable Item">
@@ -120,5 +120,5 @@ export default function CollapseDemo() {
         </LarkCollapseItem>
       </LarkCollapse>
     </Container>
-  );
+  )
 }

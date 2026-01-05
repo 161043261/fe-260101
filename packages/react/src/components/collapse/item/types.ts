@@ -1,7 +1,7 @@
-export type TName = string | number;
+export type TName = string | number
 
 export interface IProps {
-  name: TName;
-  title?: string;
-  disabled?: boolean;
+  name: TName
+  title?: string
+  disabled?: boolean
 }

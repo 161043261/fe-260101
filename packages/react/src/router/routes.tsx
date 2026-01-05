@@ -1,38 +1,38 @@
-import { lazy, Suspense, type ComponentType } from "react";
-import type { RouteObject } from "react-router";
+import { lazy, Suspense, type ComponentType } from 'react'
+import type { RouteObject } from 'react-router'
 
-type DynamicImport = () => Promise<{ default: ComponentType }>;
+type DynamicImport = () => Promise<{ default: ComponentType }>
 
 const withLazy = (cb: DynamicImport) => {
-  const Page = lazy(cb);
+  const Page = lazy(cb)
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Page />
     </Suspense>
-  );
-};
+  )
+}
 
-const routes: Required<Pick<RouteObject, "path" | "id" | "element">>[] = [
+const routes: Required<Pick<RouteObject, 'path' | 'id' | 'element'>>[] = [
   {
-    path: "/",
-    id: "index",
-    element: withLazy(() => import("../pages")),
+    path: '/',
+    id: 'index',
+    element: withLazy(() => import('../pages')),
   },
   {
-    path: "/alert",
-    id: "alert",
-    element: withLazy(() => import("../pages/alert")),
+    path: '/alert',
+    id: 'alert',
+    element: withLazy(() => import('../pages/alert')),
   },
   {
-    path: "/button",
-    id: "button",
-    element: withLazy(() => import("../pages/button")),
+    path: '/button',
+    id: 'button',
+    element: withLazy(() => import('../pages/button')),
   },
   {
-    path: "/collapse",
-    id: "collapse",
-    element: withLazy(() => import("../pages/collapse")),
+    path: '/collapse',
+    id: 'collapse',
+    element: withLazy(() => import('../pages/collapse')),
   },
-];
+]
 
-export default routes;
+export default routes

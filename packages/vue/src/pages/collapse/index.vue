@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import type { TName } from "@/components/collapse/types";
-import LarkCollapse from "@/components/collapse/index.vue";
-import LarkCollapseItem from "@/components/collapse/item/index.vue";
+import { ref } from 'vue'
+import type { TName } from '@/components/collapse/types'
+import LarkCollapse from '@/components/collapse/index.vue'
+import LarkCollapseItem from '@/components/collapse/item/index.vue'
 
-const basicActive = ref<TName[]>(["1"]);
-const accordionActive = ref<TName[]>(["a"]);
-const disabledActive = ref<TName[]>(["x"]);
+const basicActive = ref<TName[]>(['1'])
+const accordionActive = ref<TName[]>(['a'])
+const disabledActive = ref<TName[]>(['x'])
 
 const handleChange = (names: TName[]) => {
-  console.log("[collapse change]", names);
-};
+  console.log('[collapse change]', names)
+}
 </script>
 
 <template>

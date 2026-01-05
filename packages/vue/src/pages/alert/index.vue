@@ -23,7 +23,12 @@ import LarkAlert from '@/components/alert/index.vue'
     <LarkAlert title="Alert with icon" type="error" effect="light" show-icon />
 
     <h3>With Description</h3>
-    <LarkAlert title="Alert with description" type="success" effect="light" description="This is a description text for the alert." />
+    <LarkAlert
+      title="Alert with description"
+      type="success"
+      effect="light"
+      description="This is a description text for the alert."
+    />
 
     <h3>Centered</h3>
     <LarkAlert title="Centered content" type="info" effect="light" center />

@@ -1,4 +1,4 @@
-import { createContext } from "react";
-import type { IContext } from "./types";
+import { createContext } from 'react'
+import type { IContext } from './types'
 
-export const Context = createContext<IContext | null>(null);
+export const Context = createContext<IContext | null>(null)
