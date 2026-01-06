@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue'
 import type { IExpose, IProps } from './types'
-import { getPreviousBottomOffset } from './common'
+import { getPrevBottomOffset } from './common'
 import LarkComponent from '@/components/common'
 import LarkIcon from '@/components/icon/index.vue'
 
@@ -22,7 +22,7 @@ const nodeRef = useTemplateRef('message-ref')
 const height = ref(0)
 
 const siblingBottomOffset = computed(() => {
-  return getPreviousBottomOffset(id.value)
+  return getPrevBottomOffset(id.value)
 })
 
 const topOffset = computed(() => {

@@ -3,13 +3,13 @@ import type { IMessageContext } from './types'
 
 export const messageContexts = shallowReactive<IMessageContext[]>([])
 
-export function getPreviousBottomOffset(id: string) {
+export function getPrevBottomOffset(id: string) {
   const idx = messageContexts.findIndex((ctx) => ctx.id === id)
-  console.log(messageContexts[idx])
   if (idx <= 0) {
     return 0
   }
-  return 0
+  const prev = messageContexts[idx - 1]
+  return prev?.expose?.bottomOffset ?? 0
 }
 
 export function closeAll() {

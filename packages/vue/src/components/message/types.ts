@@ -13,8 +13,7 @@ export interface IProps {
 
 export interface IMessageContext {
   id: string
-  jsxElement: VNode
-  props: IProps
+  expose?: IExpose
   onClose: () => void
 }
 
@@ -22,5 +21,3 @@ export interface IExpose {
   bottomOffset: number
   display: Ref<boolean>
 }
-
-export type TPartialProps = Omit<IProps, 'id' | 'zIndex' | 'onDestroy'>

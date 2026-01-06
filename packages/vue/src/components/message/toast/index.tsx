@@ -1,58 +1,53 @@
-import { defineComponent, render, Teleport, type RenderFunction, type VNode } from 'vue'
+import { render, type VNode } from 'vue'
 import Message from '../index.vue'
 import { useZIndex } from '@/hooks'
-import type { IProps, TPartialProps } from '../types'
+import type { IExpose, IMessageContext, IProps } from '../types'
 import { createHash } from '@/utils'
-import { messageContexts } from '../common'
+import { messageContexts, closeAll } from '../common'
 
-const ToastComponent = defineComponent<TPartialProps>(
-  (props: TPartialProps) => {
-    const { nextZIndex } = useZIndex()
-    const messageId = createHash()
-    const container = document.body
+function createToast(
+  type: IProps['type'],
+  message: string,
+  duration?: number,
+  showClose?: boolean,
+) {
+  const { nextZIndex } = useZIndex()
+  const messageId = createHash()
 
-    const handleClose = () => {
-      const idx = messageContexts.findIndex((ctx) => ctx.id === messageId)
-      if (idx == -1) {
-        return
-      }
+  // const container = document.body
+  const container = document.createElement('div')
+  document.body.appendChild(container)
+
+  const handleClose = () => {
+    const idx = messageContexts.findIndex((ctx) => ctx.id === messageId)
+    if (idx != -1) {
       messageContexts.splice(idx, 1)
-      render(null, container)
     }
+    render(null, container)
+    container.remove()
+  }
 
-    const newProps: IProps = {
-      ...props,
-      id: messageId,
-      zIndex: nextZIndex(),
-      onClose: handleClose,
-    }
+  const newProps: IProps = {
+    ...{ type, message, duration, showClose },
+    id: messageId,
+    zIndex: nextZIndex(),
+    onClose: handleClose,
+  }
 
-    if (import.meta.env.DEV) {
-      // Will be tree shaken in production
-      console.log('ToastComponent', newProps)
-    }
+  if (import.meta.env.DEV) {
+    // Will be tree shaken in production
+    console.log('ToastComponent', newProps)
+  }
 
-    const vNode: VNode = (
-      <Teleport to={document.body}>
-        <Message {...newProps} />
-      </Teleport>
-    )
-
-    messageContexts.push({
-      id: messageId,
-      props: newProps,
-      // JSX.Element, React.ReactElement ≈ Vue.VNode
-      jsxElement: vNode,
-      onClose: handleClose,
-    })
-
-    const ret: RenderFunction = () => vNode
-    return ret
-  },
-  {
-    props: ['type', 'message', 'duration', 'showClose'],
-  },
-)
+  const vNode: VNode = <Message {...newProps} />
+  const ctx: IMessageContext = {
+    id: messageId,
+    onClose: handleClose,
+  }
+  messageContexts.push(ctx)
+  render(vNode, container)
+  ctx.expose = vNode.component?.exposed as IExpose
+}
 
 type TToastFunc = (message: string, duration?: number, showClose?: boolean) => void
 
@@ -61,19 +56,7 @@ interface IToast {
   error: TToastFunc
   warning: TToastFunc
   info: TToastFunc
-}
-
-function createToast(
-  type: IProps['type'],
-  message: string,
-  duration?: number,
-  showClose?: boolean,
-) {
-  const container = document.body
-  const vNode = (
-    <ToastComponent type={type} message={message} duration={duration} showClose={showClose} />
-  )
-  render(vNode, container)
+  closeAll: () => void
 }
 
 const LarkToast: IToast = {
@@ -89,6 +72,7 @@ const LarkToast: IToast = {
   info: (message: string, duration?: number, showClose?: boolean) => {
     createToast('info', message, duration, showClose)
   },
+  closeAll,
 }
 
 export default LarkToast

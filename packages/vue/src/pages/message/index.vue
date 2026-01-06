@@ -8,4 +8,5 @@ import LarkToast from '@/components/message/toast'
   <LarkButton type="error" @click="LarkToast.error('Error')">Error</LarkButton>
   <LarkButton type="warning" @click="LarkToast.warning('Warning')">Warning</LarkButton>
   <LarkButton type="info" @click="LarkToast.info('Info')">Info</LarkButton>
+  <LarkButton type="success" plain @click="LarkToast.closeAll()">Close All</LarkButton>
 </template>
