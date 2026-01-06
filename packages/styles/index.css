@@ -1,21 +1,21 @@
-@import './alert.css';
-@import './button.css';
-@import './collapse.css';
-@import './common.css';
-@import './container.css';
-@import './date-picker.css';
-@import './dialog.css';
-@import './dropdown.css';
-@import './form.css';
-@import './icon.css';
-@import './input.css';
-@import './link.css';
-@import './message.css';
-@import './message-box.css';
-@import './rate.css';
-@import './select.css';
-@import './switch.css';
-@import './tooltip.css';
+@import "./alert.css";
+@import "./button.css";
+@import "./collapse.css";
+@import "./common.css";
+@import "./container.css";
+@import "./date-picker.css";
+@import "./dialog.css";
+@import "./dropdown.css";
+@import "./form.css";
+@import "./icon.css";
+@import "./input.css";
+@import "./link.css";
+@import "./message.css";
+@import "./message-box.css";
+@import "./rate.css";
+@import "./select.css";
+@import "./switch.css";
+@import "./tooltip.css";
 
 :root {
   --color-lark-white: #ffffff;
@@ -27,8 +27,8 @@
   --lark-font-size-small: 0.8125rem; /* 13px */
   --lark-font-size-extra-small: 0.75rem; /* 12px */
   --lark-font-family:
-    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial,
-    sans-serif;
+    "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", Arial, sans-serif;
   --lark-font-weight-primary: 500;
   --lark-font-line-height-primary: 1.5rem; /* 24px */
   --lark-index-normal: 1;
@@ -40,16 +40,24 @@
   --lark-border-radius-circle: 100%;
   --lark-transition-duration: 0.3s;
   --lark-transition-duration-fast: 0.2s;
-  --lark-transition-function-ease-in-out-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --lark-transition-function-ease-in-out-bezier: cubic-bezier(
+    0.645,
+    0.045,
+    0.355,
+    1
+  );
   --lark-transition-function-fast-bezier: cubic-bezier(0.23, 1, 0.32, 1);
   --lark-transition-all: all var(--lark-transition-duration)
     var(--lark-transition-function-ease-in-out-bezier);
   --lark-transition-fade: opacity var(--lark-transition-duration)
     var(--lark-transition-function-fast-bezier);
   --lark-transition-md-fade:
-    transform var(--lark-transition-duration) var(--lark-transition-function-fast-bezier),
-    opacity var(--lark-transition-duration) var(--lark-transition-function-fast-bezier);
-  --lark-transition-fade-linear: opacity var(--lark-transition-duration-fast) linear;
+    transform var(--lark-transition-duration)
+      var(--lark-transition-function-fast-bezier),
+    opacity var(--lark-transition-duration)
+      var(--lark-transition-function-fast-bezier);
+  --lark-transition-fade-linear: opacity var(--lark-transition-duration-fast)
+    linear;
   --lark-transition-border: border-color var(--lark-transition-duration-fast)
     var(--lark-transition-function-ease-in-out-bezier);
   --lark-transition-box-shadow: box-shadow var(--lark-transition-duration-fast)
@@ -125,7 +133,8 @@
   --color-lark-fill-blank: #ffffff;
   /* --lark-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08); */
   --lark-box-shadow:
-    0 0.75rem 2rem 0.25rem rgba(0, 0, 0, 0.04), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+    0 0.75rem 2rem 0.25rem rgba(0, 0, 0, 0.04),
+    0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
   /* --lark-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12); */
   --lark-box-shadow-light: 0 0 0.75rem rgba(0, 0, 0, 0.12);
   /* --lark-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12); */
@@ -147,6 +156,7 @@
   --lark-border-width: 0.0625rem; /* 1px */
   --lark-border-style: solid;
   --color-lark-border-hover: var(--color-lark-text-disabled);
-  --lark-border: var(--lark-border-width) var(--lark-border-style) var(--color-lark-border);
+  --lark-border: var(--lark-border-width) var(--lark-border-style)
+    var(--color-lark-border);
   --color-lark-svg-monochrome-grey: var(--color-lark-border);
 }

@@ -20,7 +20,7 @@ const ToastComponent = defineComponent<TPartialProps>((props: TPartialProps) => 
     ...props,
     id: messageId,
     zIndex: nextZIndex(),
-    onClose: handleClose
+    onClose: handleClose,
   }
 
   const vNode: VNode = (
@@ -34,11 +34,11 @@ const ToastComponent = defineComponent<TPartialProps>((props: TPartialProps) => 
     props: newProps,
     // JSX.Element, React.ReactElement ≈ Vue.VNode
     jsxElement: vNode,
-    close: handleClose
+    close: handleClose,
   })
 
   const ret: RenderFunction = () => vNode
-  return ret;
+  return ret
 })
 
 type TToastFunc = (message: string, duration?: number, showClose?: boolean) => void
@@ -52,17 +52,25 @@ interface IToast {
 
 const LarkToast: IToast = {
   success: (message: string, duration?: number, showClose?: boolean) => {
-    return <ToastComponent type="success" message={message} duration={duration} showClose={showClose} />
+    return (
+      <ToastComponent type="success" message={message} duration={duration} showClose={showClose} />
+    )
   },
   error: (message: string, duration?: number, showClose?: boolean) => {
-    return <ToastComponent type="error" message={message} duration={duration} showClose={showClose} />
+    return (
+      <ToastComponent type="error" message={message} duration={duration} showClose={showClose} />
+    )
   },
   warning: (message: string, duration?: number, showClose?: boolean) => {
-    return <ToastComponent type="warning" message={message} duration={duration} showClose={showClose} />
+    return (
+      <ToastComponent type="warning" message={message} duration={duration} showClose={showClose} />
+    )
   },
   info: (message: string, duration?: number, showClose?: boolean) => {
-    return <ToastComponent type="info" message={message} duration={duration} showClose={showClose} />
-  }
+    return (
+      <ToastComponent type="info" message={message} duration={duration} showClose={showClose} />
+    )
+  },
 }
 
 export default LarkToast

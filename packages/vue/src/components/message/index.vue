@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue';
-import type { IExpose, IProps } from './types';
-import { getPreviousBottomOffset } from './common';
-import LarkComponent from '@/components/common';
-import LarkIcon from '@/components/icon/index.vue';
+import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue'
+import type { IExpose, IProps } from './types'
+import { getPreviousBottomOffset } from './common'
+import LarkComponent from '@/components/common'
+import LarkIcon from '@/components/icon/index.vue'
 
 const props = withDefaults(defineProps<IProps>(), {
   type: 'info',
@@ -35,12 +35,12 @@ const bottomOffset = computed(() => {
 
 defineExpose<IExpose>({
   bottomOffset: bottomOffset.value,
-  display: alive
+  display: alive,
 })
 
 const computedClass = computed(() => ({
   [`lark-message--${type.value}`]: type.value,
-  'has-close': showClose.value
+  'has-close': showClose.value,
 }))
 
 const computedStyle = computed(() => ({
@@ -95,8 +95,15 @@ const handleEnter = () => {
 
 <template>
   <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter">
-    <div class="lark-message" v-if="alive" :class="computedClass" ref="message-ref" :style="computedStyle"
-      @mouseenter="clearTimer" @mouseleave="startTimer">
+    <div
+      class="lark-message"
+      v-if="alive"
+      :class="computedClass"
+      ref="message-ref"
+      :style="computedStyle"
+      @mouseenter="clearTimer"
+      @mouseleave="startTimer"
+    >
       <div class="lark-message__content">
         <LarkComponent v-if="message" :element="message" />
       </div>

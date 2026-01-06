@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import LarkButton from '@/components/button/index.vue'
-import LarkToast from '@/components/message/toast';
+import LarkToast from '@/components/message/toast'
 </script>
 
 <template>

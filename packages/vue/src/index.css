@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "../../styles/index.css";
+@import '../../styles/index.css';
 
 @theme {
   --color-lark-white: #ffffff;

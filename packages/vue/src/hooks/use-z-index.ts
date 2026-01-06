@@ -37,7 +37,4 @@ function createUseZIndexV2() {
 const useZIndex = createUseZIndex()
 const useZIndexV2 = createUseZIndexV2()
 
-export {
-  useZIndex,
-  useZIndexV2
-}
+export { useZIndex, useZIndexV2 }
