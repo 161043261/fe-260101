@@ -21,6 +21,11 @@ const routes: RouteRecordRaw[] = [
     name: 'collapse',
     component: () => import('../pages/collapse/index.vue'),
   },
+  {
+    path: '/message',
+    name: 'message',
+    component: () => import('../pages/message/index.vue'),
+  },
 ]
 
 export default routes

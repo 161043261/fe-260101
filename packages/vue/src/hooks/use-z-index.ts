@@ -17,6 +17,27 @@ function createUseZIndex() {
   }
 }
 
-const useZIndex = createUseZIndex()
+function createUseZIndexV2() {
+  let deltaIndex = 0
 
-export default useZIndex
+  return (initialIndex = 2000) => {
+    const zIndex = () => initialIndex + deltaIndex
+    const nextZIndex = () => {
+      deltaIndex++
+      return zIndex()
+    }
+
+    return {
+      zIndex,
+      nextZIndex,
+    }
+  }
+}
+
+const useZIndex = createUseZIndex()
+const useZIndexV2 = createUseZIndexV2()
+
+export {
+  useZIndex,
+  useZIndexV2
+}

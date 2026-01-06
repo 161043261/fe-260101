@@ -1,6 +1,6 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
-export type TButtonType = 'primary' | 'success' | 'info' | 'warning' | 'danger'
+export type TButtonType = 'primary' | 'success' | 'info' | 'warning' | 'error'
 export type TButtonSize = 'small' | 'medium' | 'large'
 export type TButtonNativeType = 'button' | 'submit' | 'reset'
 

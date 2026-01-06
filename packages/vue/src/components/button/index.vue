@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue'
+import { computed } from 'vue'
 import type { IProps } from './types'
 import LarkIcon from '@/components/icon/index.vue'
 
@@ -24,16 +24,10 @@ const computedClass = computed(() => {
     },
   ]
 })
-
-const ref = useTemplateRef('button-ref')
-
-defineExpose({
-  ref,
-})
 </script>
 
 <template>
-  <button class="lark-button" ref="button-ref" :class="computedClass" :type="nativeType">
+  <button class="lark-button" :class="computedClass" :type="nativeType">
     <LarkIcon icon="spinner" v-if="loading" spin />
     <LarkIcon :icon="icon" v-if="icon" />
     <span>

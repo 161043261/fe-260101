@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, useTemplateRef } from 'vue';
-import type { IProps } from './types';
+import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue';
+import type { IExpose, IProps } from './types';
+import { getPreviousBottomOffset } from './common';
+import LarkComponent from '@/components/common';
+import LarkIcon from '@/components/icon/index.vue';
 
 const props = withDefaults(defineProps<IProps>(), {
   type: 'info',
@@ -8,20 +11,99 @@ const props = withDefaults(defineProps<IProps>(), {
   offset: 20,
 })
 
-const display = ref(true)
+defineOptions({
+  name: 'LarkMessage',
+})
+
+const { id, offset, zIndex, duration, type, showClose } = toRefs(props)
+const alive = ref(true)
 const nodeRef = useTemplateRef('message-ref')
 
 const height = ref(0)
 
+const siblingBottomOffset = computed(() => {
+  return getPreviousBottomOffset(id.value)
+})
 
-const getTopSiblingBottomOffset = (id: string) => {
-  const index =
+const topOffset = computed(() => {
+  return siblingBottomOffset.value + offset.value
+})
+
+const bottomOffset = computed(() => {
+  return topOffset.value + height.value
+})
+
+defineExpose<IExpose>({
+  bottomOffset: bottomOffset.value,
+  display: alive
+})
+
+const computedClass = computed(() => ({
+  [`lark-message--${type.value}`]: type.value,
+  'has-close': showClose.value
+}))
+
+const computedStyle = computed(() => ({
+  top: `${topOffset.value}px`,
+  zIndex: zIndex.value,
+}))
+
+let timer: number | null = null
+
+const startTimer = () => {
+  if (duration.value === 0) {
+    return
+  }
+  timer = setTimeout(() => {
+    alive.value = false
+  }, duration.value)
 }
 
+const clearTimer = () => {
+  if (timer) {
+    clearTimeout(timer)
+    timer = null
+  }
+}
 
-const topOffset = computed
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    alive.value = false
+  }
+}
+
+document.addEventListener('keydown', handleKeyDown)
+
+onMounted(() => {
+  alive.value = true
+  startTimer()
+})
+
+onUnmounted(() => {
+  clearTimer()
+  document.removeEventListener('keydown', handleKeyDown)
+})
+
+const handleAfterLeave = () => {
+  props.onClose?.()
+}
+
+const handleEnter = () => {
+  height.value = nodeRef.value?.getBoundingClientRect().height ?? 0
+}
 </script>
 
 <template>
-  <div></div>
+  <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter">
+    <div class="lark-message" v-if="alive" :class="computedClass" ref="message-ref" :style="computedStyle"
+      @mouseenter="clearTimer" @mouseleave="startTimer">
+      <div class="lark-message__content">
+        <LarkComponent v-if="message" :element="message" />
+      </div>
+
+      <div class="lark-message__close" v-if="showClose">
+        <LarkIcon @click.stop="alive = false" icon="xmark" />
+      </div>
+    </div>
+  </Transition>
 </template>

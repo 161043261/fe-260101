@@ -1,4 +1,4 @@
-export type TButtonType = 'primary' | 'success' | 'info' | 'warning' | 'danger'
+export type TButtonType = 'primary' | 'success' | 'info' | 'warning' | 'error'
 export type TButtonSize = 'small' | 'medium' | 'large'
 export type TNativeType = 'button' | 'submit' | 'reset'
 

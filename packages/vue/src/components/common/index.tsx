@@ -1,18 +1,21 @@
-import { defineComponent, type VNode } from 'vue'
+import { defineComponent, type Component, type RenderFunction, type VNode } from 'vue'
 
 interface IProps {
-  functionComponent: VNode
+  element: string | VNode
 }
 
-const ReturnJSXElement = defineComponent<IProps>(
+const LarkComponent: Component<IProps> = defineComponent<IProps>(
   (props: IProps /** , ctx */) => {
-    const { functionComponent } = props
-    return () => <>{functionComponent}</>
-  },
-  {
-    // name, props, emits, slots
-    props: ['functionComponent'],
-  },
+    const { element } = props
+    const vNode: VNode = (
+      <div>
+        {import.meta.env.DEV ? "Lark Component" : ""}
+        {element}
+      </div>
+    )
+    const renderFunc: RenderFunction = () => vNode
+    return renderFunc
+  }
 )
 
-export default ReturnJSXElement
+export default LarkComponent

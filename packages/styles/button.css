@@ -76,17 +76,17 @@
     }
   }
 
-  /* danger */
-  &.lark-button--danger {
-    background-color: var(--color-lark-danger);
+  /* error */
+  &.lark-button--error {
+    background-color: var(--color-lark-error);
 
     &.is-plain {
-      color: var(--color-lark-danger);
-      border: var(--color-lark-danger-light-5);
-      background-color: var(--color-lark-danger-light-9);
+      color: var(--color-lark-error);
+      border: var(--color-lark-error-light-5);
+      background-color: var(--color-lark-error-light-9);
 
       &:hover {
-        background-color: var(--color-lark-danger);
+        background-color: var(--color-lark-error);
         color: var(--color-lark-white);
       }
     }

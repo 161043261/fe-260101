@@ -51,7 +51,7 @@ const alertIcon = computed(() => {
 <template>
   <!-- name 是 CSS 类选择器名的前缀, 默认值是 v- -->
   <!-- v-[enter | leave]-[from | active | to] -->
-  <Transition name="lark-alert-fade">
+  <Transition name="fade">
     <div class="lark-alert" :class="computedClass" v-if="display">
       <div class="lark-alert__content">
         <span v-if="showIcon" class="lark-alert__icon">

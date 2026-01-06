@@ -26,7 +26,7 @@ function ButtonDemo() {
         <LarkButton type="success">Success</LarkButton>
         <LarkButton type="info">Info</LarkButton>
         <LarkButton type="warning">Warning</LarkButton>
-        <LarkButton type="danger">Danger</LarkButton>
+        <LarkButton type="error">Danger</LarkButton>
       </div>
 
       <h3>Plain Buttons</h3>
@@ -43,7 +43,7 @@ function ButtonDemo() {
         <LarkButton type="warning" plain>
           Warning
         </LarkButton>
-        <LarkButton type="danger" plain>
+        <LarkButton type="error" plain>
           Danger
         </LarkButton>
       </div>
@@ -62,7 +62,7 @@ function ButtonDemo() {
         <LarkButton type="warning" round>
           Warning
         </LarkButton>
-        <LarkButton type="danger" round>
+        <LarkButton type="error" round>
           Danger
         </LarkButton>
       </div>
@@ -73,7 +73,7 @@ function ButtonDemo() {
         <LarkButton type="success" circle icon="check" />
         <LarkButton type="info" circle icon="message" />
         <LarkButton type="warning" circle icon="star" />
-        <LarkButton type="danger" circle icon="remove" />
+        <LarkButton type="error" circle icon="remove" />
       </div>
 
       <h3>Button Sizes</h3>
@@ -117,7 +117,7 @@ function ButtonDemo() {
         <LarkButton type="success" icon="check">
           Confirm
         </LarkButton>
-        <LarkButton type="danger" icon="remove">
+        <LarkButton type="error" icon="remove">
           Delete
         </LarkButton>
       </div>

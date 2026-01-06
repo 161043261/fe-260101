@@ -63,7 +63,7 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
   return (
     <CSSTransition
       nodeRef={nodeRef}
-      classNames="lark-alert-fade"
+      classNames="fade"
       in={display}
       unmountOnExit
       timeout={200}

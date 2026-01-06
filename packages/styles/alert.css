@@ -20,6 +20,43 @@
     /* top: 0; */
     cursor: pointer;
   }
+
+  /* ==================== Vue ==================== */
+  &.fade-enter-from,
+  &.fade-leave-to {
+    opacity: 0;
+  }
+
+  &.fade-enter-active,
+  &.fade-leave-active {
+    transition: opacity 200ms;
+  }
+
+  &.fade-enter-to,
+  &.fade-leave-from {
+    opacity: 1;
+  }
+
+  /* ==================== React ==================== */
+  &.fade-enter {
+    opacity: 0;
+  }
+
+  /* React, MUST write after .[prefix]-enter */
+  &.fade-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  &.fade-exit {
+    opacity: 1;
+  }
+
+  /* React, MUST write after .[prefix]-exit */
+  &.fade-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
 }
 
 .lark-alert--success.lark-alert--light {
@@ -94,41 +131,4 @@
 
 .lark-alert.is-center {
   justify-content: center;
-}
-
-/* ==================== Vue ==================== */
-.lark-alert-fade-enter-from,
-.lark-alert-fade-leave-to {
-  opacity: 0;
-}
-
-.lark-alert-fade-enter-active,
-.lark-alert-fade-leave-active {
-  transition: opacity 200ms;
-}
-
-.lark-alert-fade-enter-to,
-.lark-alert-fade-leave-from {
-  opacity: 1;
-}
-
-/* ==================== React ==================== */
-.lark-alert-fade-enter {
-  opacity: 0;
-}
-
-/* React, MUST write after .[prefix]-enter */
-.lark-alert-fade-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-
-.lark-alert-fade-exit {
-  opacity: 1;
-}
-
-/* React, MUST write after .[prefix]-exit */
-.lark-alert-fade-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
 }
