@@ -5,7 +5,7 @@ import LarkToast from '@/components/message/toast'
 
 <template>
   <LarkButton type="success" @click="LarkToast.success('Success')">Success</LarkButton>
-  <LarkButton type="error" @click="LarkToast.success('Error')">Error</LarkButton>
-  <LarkButton type="warning" @click="LarkToast.success('Warning')">Warning</LarkButton>
-  <LarkButton type="info" @click="LarkToast.success('Info')">Info</LarkButton>
+  <LarkButton type="error" @click="LarkToast.error('Error')">Error</LarkButton>
+  <LarkButton type="warning" @click="LarkToast.warning('Warning')">Warning</LarkButton>
+  <LarkButton type="info" @click="LarkToast.info('Info')">Info</LarkButton>
 </template>

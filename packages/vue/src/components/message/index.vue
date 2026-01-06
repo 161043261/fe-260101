@@ -51,6 +51,7 @@ const computedStyle = computed(() => ({
 let timer: number | null = null
 
 const startTimer = () => {
+  // return
   if (duration.value === 0) {
     return
   }

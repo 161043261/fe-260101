@@ -15,7 +15,7 @@ export interface IMessageContext {
   id: string
   jsxElement: VNode
   props: IProps
-  close: () => void
+  onClose: () => void
 }
 
 export interface IExpose {
