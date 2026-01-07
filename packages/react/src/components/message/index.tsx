@@ -55,21 +55,23 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
     [topOffset, zIndex],
   )
 
-  let timer: number | null | NodeJS.Timeout = null
+  // [ERROR] 必须使用 useRef 保存
+  // let timer: number | null | NodeJS.Timeout = null
+  const timer = useRef<number | null | NodeJS.Timeout>(null)
 
   const startTimer = () => {
     if (duration === 0) {
       return
     }
-    timer = setTimeout(() => {
+    timer.current = setTimeout(() => {
       setAlive(false)
     }, duration)
   }
 
   const clearTimer = () => {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
     }
   }
 
@@ -79,10 +81,13 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
     }
   }
 
-  document.addEventListener('keydown', handleKeyDown)
+  // [ERROR] 每次 (重新) 渲染时, 都会添加事件监听器
+  // document.addEventListener('keydown', handleKeyDown)
 
   useEffect(() => {
     startTimer()
+    document.addEventListener('keydown', handleKeyDown)
+
     return () => {
       clearTimer()
       document.removeEventListener('keydown', handleKeyDown)
