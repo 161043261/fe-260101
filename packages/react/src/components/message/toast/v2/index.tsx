@@ -1,11 +1,10 @@
 import { useZIndex } from '@/hooks'
-import type { IExpose, IMessageContext, IProps, IToast } from '../types'
+import type { IExpose, IMessageContext, IProps, IToast } from '@/components/message/types'
 import { createHash } from '@/utils'
-import { closeAll, messageContexts } from '../common'
-import LarkMessage from '..'
-import { createRef, type FC, type ReactElement } from 'react'
+import { closeAll, messageContexts } from '@/components/message/common'
+import LarkMessage from '@/components/message'
+import { type FC, type ReactElement } from 'react'
 import { createRoot } from 'react-dom/client'
-// import { flushSync } from 'react-dom'
 
 function createToast(
   type: IProps['type'],
@@ -28,23 +27,8 @@ function createToast(
     if (idx != -1) {
       messageContexts.splice(idx, 1)
     }
-    // ========== Vue ==========
-    // render(null, container)
-    // ========== React ==========
-
-    // <CSSTransition /> 组件的 onExited 回调函数中
-    // 同步调用 root.unmount() 卸载 React 组件
-    // 但此时 React 正在渲染
-    // 使用 setTimeout(cb, 0) 或 queueMicrotask(cb)
-    // 将卸载操作推迟到下一个事件循环
-
-    // root.unmount()
-    // container.remove()
-
-    queueMicrotask(() => {
-      root.unmount()
-      container.remove()
-    })
+    root.unmount()
+    container.remove()
   }
 
   const newProps: IProps = {
@@ -56,7 +40,7 @@ function createToast(
 
   if (import.meta.env.DEV) {
     // Will be tree shaken in production
-    console.log('[createToast] newProps', newProps)
+    console.log('ToastComponent', newProps)
   }
 
   const ctx: IMessageContext = {
@@ -65,34 +49,26 @@ function createToast(
     expose: null,
   }
 
-  const ref = createRef<IExpose>()
+  const refCallback = (expose: IExpose) => {
+    if (import.meta.env.DEV) {
+      console.log('Attached', expose)
+    }
+    ctx.expose = expose
+    return () => {
+      if (import.meta.env.DEV) {
+        console.log('Clean up', expose)
+      }
+      // handleClose();
+      queueMicrotask(handleClose)
+    }
+  }
 
   // ComponentType: Class Component, Function Component
   // FC: Function Component
-  const element: ReactElement<IProps, FC<IProps>> = (
-    <LarkMessage {...newProps} ref={ref} shouldHandleExited />
-  )
+  const element: ReactElement<IProps, FC<IProps>> = <LarkMessage {...newProps} ref={refCallback} />
 
   messageContexts.push(ctx)
-  // render(elem, container)
   root.render(element)
-
-  if (import.meta.env.DEV) {
-    console.log('[createToast] current event loop ref.current', ref.current)
-  }
-
-  // Using flushSync is uncommon and can hurt the performance of your app.
-  // flushSync(() => {
-  //   root.render(element)
-  // })
-  // ctx.expose = ref.current
-
-  requestAnimationFrame(() => {
-    if (import.meta.env.DEV) {
-      console.log('[createToast] requestAnimationFrame ref.current', ref.current)
-    }
-    ctx.expose = ref.current
-  })
 }
 
 const LarkToast: IToast = {

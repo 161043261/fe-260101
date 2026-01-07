@@ -9,7 +9,9 @@
   line-height: 2.5rem;
   font-size: 0.875rem;
   border-radius: 0.3125rem;
-  transition: top 0.3s ease-out;
+  transition:
+    transform 3s ease-out,
+    opacity 3s ease-out;
 
   &.has-close .lark-message__content {
     padding-right: 1.875rem;
@@ -30,7 +32,7 @@
   &.fade-up-enter-from,
   &.fade-up-leave-to {
     opacity: 0;
-    transform: translate(-50%, -100%);
+    transform: translateY(-100%);
   }
 }
 

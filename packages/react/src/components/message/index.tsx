@@ -17,6 +17,7 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
     className,
     ref,
     message,
+    shouldHandleExited = false,
     onClose,
   } = props
 
@@ -99,7 +100,10 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
   }
 
   const handleExited = () => {
-    onClose?.()
+    if (shouldHandleExited) {
+      console.log('Please use @/components/message/toast/v2')
+      onClose?.()
+    }
   }
 
   return (

@@ -90,7 +90,12 @@ const handleAfterLeave = () => {
 </script>
 
 <template>
-  <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter">
+  <Transition
+    name="fade-up"
+    @after-leave="handleAfterLeave"
+    @enter="handleEnter"
+    :duration="duration"
+  >
     <div
       class="lark-message"
       v-if="alive"
