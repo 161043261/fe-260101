@@ -1,9 +1,10 @@
-import { useZIndex } from '@/hooks/use-z-index'
+import { useZIndex } from '@/hooks'
 import type { IMessageContext, IProps, IToast } from '../types'
 import { createHash } from '@/utils'
 import { closeAll, messageContexts } from '../common'
 import LarkMessage from '..'
-import type { ReactElement } from 'react'
+import type { FC, ReactElement } from 'react'
+import { createRoot } from 'react-dom/client'
 
 function createToast(
   type: IProps['type'],
@@ -18,12 +19,18 @@ function createToast(
   const container = document.createElement('div')
   document.body.appendChild(container)
 
+  // ========== React ==========
+  const root = createRoot(container)
+
   const handleClose = () => {
     const idx = messageContexts.findIndex((ctx) => ctx.id === messageId)
     if (idx != -1) {
       messageContexts.splice(idx, 1)
     }
+    // ========== Vue ==========
     // render(null, container)
+    // ========== React ==========
+    root.unmount()
     container.remove()
   }
 
@@ -39,14 +46,24 @@ function createToast(
     console.log('ToastComponent', newProps)
   }
 
-  const element: ReactElement<IProps, typeof LarkMessage> = <LarkMessage {...newProps} />
+  // ComponentType: Class Component, Function Component
+  // FC: Function Component
+  const elementObj: ReactElement<IProps, FC<IProps>> = <LarkMessage {...newProps} />
   const ctx: IMessageContext = {
     id: messageId,
     onClose: handleClose,
+    // const container = document.createElement('div')
+    // document.body.appendChild(container)
+    container,
+    // const root = createRoot(container)
+    root,
+    // const element = <LarkMessage {...newProps} />,
+    element: elementObj,
   }
+
   messageContexts.push(ctx)
   // render(elem, container)
-  console.log(element)
+  root.render(elementObj)
 }
 
 const LarkToast: IToast = {

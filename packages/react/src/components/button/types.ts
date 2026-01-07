@@ -1,18 +1,18 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { ButtonHTMLAttributes } from 'react'
 
-export type TButtonType = 'primary' | 'success' | 'info' | 'warning' | 'error'
-export type TButtonSize = 'small' | 'medium' | 'large'
-export type TButtonNativeType = 'button' | 'submit' | 'reset'
+type TNativeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-export interface IProps {
-  type?: TButtonType
-  size?: TButtonSize
-  nativeType?: TButtonNativeType
+type TButtonProps = Omit<TNativeButtonProps, 'type' | 'autofocus' | 'disabled'> &
+  Partial<Pick<TNativeButtonProps, 'autoFocus' | 'disabled'>>
+
+export interface IProps extends TButtonProps {
+  type?: 'primary' | 'success' | 'info' | 'warning' | 'error'
+  size?: 'small' | 'medium' | 'large'
+  nativeType?: TNativeButtonProps['type']
   plain?: boolean
   round?: boolean
   circle?: boolean
-  disabled?: boolean
-  autofocus?: boolean
   loading?: boolean
   icon?: IconProp
 }

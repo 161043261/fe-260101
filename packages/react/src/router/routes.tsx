@@ -33,6 +33,11 @@ const routes: Required<Pick<RouteObject, 'path' | 'id' | 'element'>>[] = [
     id: 'collapse',
     element: withLazy(() => import('../pages/collapse')),
   },
+  {
+    path: '/message',
+    id: 'message',
+    element: withLazy(() => import('../pages/message')),
+  },
 ]
 
 export default routes

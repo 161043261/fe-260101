@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import type { ComponentType, JSXElementConstructor, ReactElement, ReactNode } from 'react'
+import type { Root } from 'react-dom/client'
 
 export interface IProps {
   id: string
@@ -15,6 +16,11 @@ export interface IMessageContext {
   id: string
   expose?: IExpose
   onClose: () => void
+
+  // ========== React ==========
+  container?: HTMLDivElement
+  root?: Root
+  element?: ReactElement<IProps, ComponentType<IProps>>
 }
 
 export interface IExpose {

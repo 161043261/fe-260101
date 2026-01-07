@@ -10,5 +10,10 @@ export function getPrevBottomOffset(id: string) {
 }
 
 export function closeAll() {
-  messageContexts.forEach((item) => item.onClose())
+  messageContexts.forEach((item) => {
+    item.root?.unmount()
+    item.container?.remove()
+
+    item.onClose()
+  })
 }
