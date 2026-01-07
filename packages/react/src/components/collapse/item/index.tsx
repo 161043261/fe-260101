@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { useContext, useMemo, type PropsWithChildren } from 'react'
 import { Context } from '../constants'
 import LarkIcon from '@/components/icon'
-import { useDisplayNone } from '@/hooks'
+import { useDisplayNone } from '@/hooks/use-style'
 
 function LarkCollapseItem(props: PropsWithClassName<PropsWithChildren<IProps>>) {
   const { disabled, name, title, className, children } = props

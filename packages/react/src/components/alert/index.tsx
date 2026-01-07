@@ -31,7 +31,7 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
     [type, effect, center],
   )
 
-  const [display, setDisplay] = useState(true)
+  const [alive, setAlive] = useState(true)
 
   const alertIcon = useMemo(() => {
     switch (type) {
@@ -54,27 +54,14 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
   }, [type])
 
   const handleClose = (e: MouseEvent) => {
-    setDisplay(false)
+    setAlive(false)
     onClose?.(e)
   }
 
   const nodeRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      classNames="fade"
-      in={display}
-      unmountOnExit
-      timeout={200}
-      {...(import.meta.env.DEV
-        ? {
-            onExit: () => console.log(`Exit ${new Date().toLocaleTimeString()}`),
-            onExiting: () => console.log(`Exiting ${new Date().toLocaleTimeString()}`),
-            onExited: () => console.log(`Exited ${new Date().toLocaleTimeString()}`),
-          }
-        : {})}
-    >
+    <CSSTransition nodeRef={nodeRef} classNames="fade" in={alive} unmountOnExit timeout={200}>
       <div className={classNames(className, 'lark-alert', computedClass)} ref={nodeRef}>
         <div className="lark-alert__content">
           {showIcon && (
@@ -82,7 +69,7 @@ function LarkAlert(props: PropsWithClassName<IProps>) {
               <LarkIcon
                 icon={alertIcon}
                 onClick={() => {
-                  setDisplay(false)
+                  setAlive(false)
                 }}
               />
             </span>

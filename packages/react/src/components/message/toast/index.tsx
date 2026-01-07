@@ -1,9 +1,9 @@
-import { render, type VNode } from 'vue'
-import LarkMessage from '../index.vue'
-import { useZIndex } from '@/hooks'
-import type { IExpose, IMessageContext, IProps, IToast } from '../types'
+import { useZIndex } from '@/hooks/use-z-index'
+import type { IMessageContext, IProps, IToast } from '../types'
 import { createHash } from '@/utils'
-import { messageContexts, closeAll } from '../common'
+import { closeAll, messageContexts } from '../common'
+import LarkMessage from '..'
+import type { ReactElement } from 'react'
 
 function createToast(
   type: IProps['type'],
@@ -23,7 +23,7 @@ function createToast(
     if (idx != -1) {
       messageContexts.splice(idx, 1)
     }
-    render(null, container)
+    // render(null, container)
     container.remove()
   }
 
@@ -39,14 +39,14 @@ function createToast(
     console.log('ToastComponent', newProps)
   }
 
-  const vNode: VNode = <LarkMessage {...newProps} />
+  const element: ReactElement<IProps, typeof LarkMessage> = <LarkMessage {...newProps} />
   const ctx: IMessageContext = {
     id: messageId,
     onClose: handleClose,
   }
   messageContexts.push(ctx)
-  render(vNode, container)
-  ctx.expose = vNode.component?.exposed as IExpose
+  // render(elem, container)
+  console.log(element)
 }
 
 const LarkToast: IToast = {
