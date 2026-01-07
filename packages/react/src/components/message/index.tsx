@@ -112,7 +112,7 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
       classNames="fade-up"
       in={alive}
       unmountOnExit
-      timeout={duration}
+      timeout={300}
       onEnter={handleEnter}
       onExited={handleExited}
     >

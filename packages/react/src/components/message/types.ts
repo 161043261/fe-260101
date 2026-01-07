@@ -23,7 +23,7 @@ export interface IExpose {
   alive: boolean
 }
 
-type TToastFunc = (message: string, duration?: number, showClose?: boolean) => void
+type TToastFunc = (message: string, showClose?: boolean, duration?: number) => void
 
 export interface IToast {
   success: TToastFunc

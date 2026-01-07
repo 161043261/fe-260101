@@ -4,14 +4,14 @@
   width: 23.75rem;
   height: 2.5rem;
   z-index: 8888;
-  margin-left: 11.875rem;
+  /* margin-left: 11.875rem; */
   text-align: center;
   line-height: 2.5rem;
   font-size: 0.875rem;
   border-radius: 0.3125rem;
   transition:
-    transform 3s ease-out,
-    opacity 3s ease-out;
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
 
   &.has-close .lark-message__content {
     padding-right: 1.875rem;
@@ -31,6 +31,12 @@
 
   &.fade-up-enter-from,
   &.fade-up-leave-to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  &.fade-up-enter,
+  &.fade-up-exit-active {
     opacity: 0;
     transform: translateY(-100%);
   }

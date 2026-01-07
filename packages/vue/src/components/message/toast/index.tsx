@@ -1,16 +1,11 @@
 import { render, type VNode } from 'vue'
 import LarkMessage from '../index.vue'
-import { useZIndex } from '@/hooks'
+import { useZIndexV2 as useZIndex } from '@/hooks'
 import type { IExpose, IMessageContext, IProps, IToast } from '../types'
 import { createHash } from '@/utils'
 import { messageContexts, closeAll } from '../common'
 
-function createToast(
-  type: IProps['type'],
-  message: string,
-  duration?: number,
-  showClose?: boolean,
-) {
+function createToast(type: IProps['type'], message: string, closable?: boolean, duration?: number) {
   const { nextZIndex } = useZIndex()
   const messageId = createHash()
 
@@ -28,7 +23,7 @@ function createToast(
   }
 
   const newProps: IProps = {
-    ...{ type, message, duration, showClose },
+    ...{ type, message, duration, showClose: closable },
     id: messageId,
     zIndex: nextZIndex(),
     onClose: handleClose,
@@ -50,17 +45,17 @@ function createToast(
 }
 
 const LarkToast: IToast = {
-  success: (message: string, duration?: number, showClose?: boolean) => {
-    createToast('success', message, duration, showClose)
+  success: (message: string, closable?: boolean, duration?: number) => {
+    createToast('success', message, closable, duration)
   },
-  error: (message: string, duration?: number, showClose?: boolean) => {
-    createToast('error', message, duration, showClose)
+  error: (message: string, closable?: boolean, duration?: number) => {
+    createToast('error', message, closable, duration)
   },
-  warning: (message: string, duration?: number, showClose?: boolean) => {
-    createToast('warning', message, duration, showClose)
+  warning: (message: string, closable?: boolean, duration?: number) => {
+    createToast('warning', message, closable, duration)
   },
-  info: (message: string, duration?: number, showClose?: boolean) => {
-    createToast('info', message, duration, showClose)
+  info: (message: string, closable?: boolean, duration?: number) => {
+    createToast('info', message, closable, duration)
   },
   closeAll,
 }
