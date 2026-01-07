@@ -1,101 +1,107 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue'
-import type { IExpose, IProps } from './types'
-import { getPrevBottomOffset } from './common'
-import LarkComponent from '@/components/common'
-import LarkIcon from '@/components/icon/index.vue'
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  toRefs,
+  useTemplateRef,
+} from "vue";
+import type { IExpose, IProps } from "./types";
+import { getPrevBottomOffset } from "./common";
+import LarkComponent from "@/components/common";
+import LarkIcon from "@/components/icon/index.vue";
 
 const props = withDefaults(defineProps<IProps>(), {
-  type: 'info',
+  type: "info",
   duration: 3000,
   offset: 20,
-})
+});
 
 defineOptions({
-  name: 'LarkMessage',
-})
+  name: "LarkMessage",
+});
 
-const { id, offset, zIndex, duration, type, showClose } = toRefs(props)
-const alive = ref(true)
-const nodeRef = useTemplateRef('message-ref')
-
-const height = ref(0)
-
-const siblingBottomOffset = computed(() => {
-  return getPrevBottomOffset(id.value)
-})
+const { id, offset, zIndex, duration, type, showClose } = toRefs(props);
+const alive = ref(true);
+const nodeRef = useTemplateRef("message-ref");
+const height = ref(0);
 
 const topOffset = computed(() => {
-  return siblingBottomOffset.value + offset.value
-})
+  return getPrevBottomOffset(id.value) + offset.value;
+});
 
 const bottomOffset = computed(() => {
-  return topOffset.value + height.value
-})
+  return topOffset.value + height.value;
+});
 
 defineExpose<IExpose>({
   bottomOffset: bottomOffset.value,
-  display: alive,
-})
+  alive,
+});
 
 const computedClass = computed(() => ({
   [`lark-message--${type.value}`]: type.value,
-  'has-close': showClose.value,
-}))
+  "has-close": showClose.value,
+}));
 
 const computedStyle = computed(() => ({
   top: `${topOffset.value}px`,
   zIndex: zIndex.value,
-}))
+}));
 
-let timer: number | null = null
+let timer: number | null = null;
 
 const startTimer = () => {
   // return
   if (duration.value === 0) {
-    return
+    return;
   }
   timer = setTimeout(() => {
-    alive.value = false
-  }, duration.value)
-}
+    alive.value = false;
+  }, duration.value);
+};
 
 const clearTimer = () => {
   if (timer) {
-    clearTimeout(timer)
-    timer = null
+    clearTimeout(timer);
+    timer = null;
   }
-}
+};
 
 const handleKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') {
-    alive.value = false
+  if (e.key === "Escape") {
+    alive.value = false;
   }
-}
+};
 
-document.addEventListener('keydown', handleKeyDown)
+document.addEventListener("keydown", handleKeyDown);
 
 onMounted(() => {
-  alive.value = true
-  startTimer()
-})
+  alive.value = true;
+  startTimer();
+});
 
 onUnmounted(() => {
-  clearTimer()
-  document.removeEventListener('keydown', handleKeyDown)
-})
+  clearTimer();
+  document.removeEventListener("keydown", handleKeyDown);
+});
 
 const handleAfterLeave = () => {
-  props.onClose?.()
-}
+  props.onClose?.();
+};
 
 const handleEnter = () => {
-  height.value = nodeRef.value?.getBoundingClientRect().height ?? 0
-}
+  height.value = nodeRef.value?.getBoundingClientRect().height ?? 0;
+};
 </script>
 
 <template>
-  <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter">
+  <Transition
+    name="fade-up"
+    @after-leave="handleAfterLeave"
+    @enter="handleEnter"
+  >
     <div
       class="lark-message"
       v-if="alive"
