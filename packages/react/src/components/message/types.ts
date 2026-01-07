@@ -1,4 +1,4 @@
-import type { ComponentType, JSXElementConstructor, ReactElement, ReactNode } from 'react'
+import type { ComponentType, ReactElement, ReactNode } from 'react'
 import type { Root } from 'react-dom/client'
 
 export interface IProps {

@@ -30,8 +30,20 @@ function createToast(
     // ========== Vue ==========
     // render(null, container)
     // ========== React ==========
-    root.unmount()
-    container.remove()
+
+    // <CSSTransition /> 组件的 onExited 回调函数中
+    // 同步调用 root.unmount() 卸载 React 组件
+    // 但此时 React 正在渲染
+    // 使用 setTimeout(cb, 0) 或 queueMicrotask(cb)
+    // 将卸载操作推迟到下一个事件循环
+
+    // root.unmount()
+    // container.remove()
+
+    queueMicrotask(() => {
+      root.unmount()
+      container.remove()
+    })
   }
 
   const newProps: IProps = {

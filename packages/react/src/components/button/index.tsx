@@ -2,21 +2,21 @@ import { useMemo, useRef, type PropsWithChildren } from 'react'
 import type { IProps } from './types'
 import classNames from 'classnames'
 import LarkIcon from '@/components/icon'
-import type { PropsWithClassName } from '@/types'
 
-function LarkButton(props: PropsWithClassName<PropsWithChildren<IProps>>) {
+function LarkButton(props: PropsWithChildren<IProps>) {
   const {
     type = 'primary',
     size = 'medium',
     nativeType = 'button',
-    round,
-    loading,
-    circle,
-    disabled,
     plain,
+    round,
+    circle,
+    loading,
     icon,
+    disabled,
     children,
     className,
+    onClick,
   } = props
 
   const computedClass = useMemo(() => {
@@ -43,6 +43,7 @@ function LarkButton(props: PropsWithClassName<PropsWithChildren<IProps>>) {
       ref={ref}
       type={nativeType}
       className={classNames(className, 'lark-button', computedClass)}
+      onClick={onClick}
     >
       {loading && <LarkIcon icon="spinner" spin />}
       {icon && <LarkIcon icon={icon} />}

@@ -2,7 +2,6 @@ import { useEffect, type RefObject } from 'react'
 
 // type Ref<T> = RefCallback<T> | RefObject<T | null> | null;
 // RefCallback
-// https://react.dev/reference/react-dom/components/common#ref-callback
 function useClickOutside(nodeRef: RefObject<HTMLElement | null>, cb: (e: MouseEvent) => void) {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -21,5 +20,3 @@ function useClickOutside(nodeRef: RefObject<HTMLElement | null>, cb: (e: MouseEv
 }
 
 export default useClickOutside
-
-// useRef()

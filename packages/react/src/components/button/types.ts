@@ -3,8 +3,8 @@ import type { ButtonHTMLAttributes } from 'react'
 
 type TNativeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-type TButtonProps = Omit<TNativeButtonProps, 'type' | 'autofocus' | 'disabled'> &
-  Partial<Pick<TNativeButtonProps, 'autoFocus' | 'disabled'>>
+type TButtonProps = Pick<TNativeButtonProps, 'children' | 'className' | 'onClick'> &
+  Partial<Pick<TNativeButtonProps, 'disabled'>>
 
 export interface IProps extends TButtonProps {
   type?: 'primary' | 'success' | 'info' | 'warning' | 'error'
@@ -15,4 +15,5 @@ export interface IProps extends TButtonProps {
   circle?: boolean
   loading?: boolean
   icon?: IconProp
+  // disabled, children, className, onClick
 }

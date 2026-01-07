@@ -36,12 +36,12 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
       bottomOffset,
       alive,
     }),
-    [],
+    [bottomOffset, alive],
   )
 
   const computedClass = useMemo(
     () => ({
-      [`lark-message-${type}`]: type,
+      [`lark-message--${type}`]: type,
       'has-close': showClose,
     }),
     [type, showClose],
@@ -58,7 +58,6 @@ function LarkMessage(props: PropsWithClassName<PropsWithRef<IProps, IExpose>>) {
   let timer: number | null | NodeJS.Timeout = null
 
   const startTimer = () => {
-    // return
     if (duration === 0) {
       return
     }
