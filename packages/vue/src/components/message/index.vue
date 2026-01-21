@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue'
 import type { IExpose, IProps } from './types'
-import { getPrevBottomOffset } from './common'
+import { getPrevBottomOffset } from './main'
 import LarkComponent from '@/components/common'
 import LarkIcon from '@/components/icon/index.vue'
 

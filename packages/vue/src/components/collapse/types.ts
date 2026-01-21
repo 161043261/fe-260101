@@ -14,6 +14,6 @@ export interface IProps {
 }
 
 export interface IEmits {
-  (eventName: 'update:modelValue', value: TName[]): void
+  (eventName: 'update:model-value', value: TName[]): void
   (eventName: 'change', value: TName[]): void
 }

@@ -22,7 +22,7 @@ watch(modelValue, () => {
 
 const setActiveNames = (names: TName[]) => {
   activeNames.value = names
-  emits('update:modelValue', names)
+  emits('update:model-value', names)
   emits('change', names)
 }
 
