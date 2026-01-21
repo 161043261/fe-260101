@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<IProps>(), {
   trigger: 'blur',
 })
 
-const emits = defineEmits<IEmits>();
+const emits = defineEmits<IEmits>()
 
 const itemContexts: IFormItemContext[] = []
 

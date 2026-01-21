@@ -1,7 +1,22 @@
 <script setup lang="ts">
-import { computed, inject, onMounted, onUnmounted, provide, reactive, toRef, useTemplateRef } from 'vue'
+import {
+  computed,
+  inject,
+  onMounted,
+  onUnmounted,
+  provide,
+  reactive,
+  toRef,
+  useTemplateRef,
+} from 'vue'
 import type { IExpose, IProps, IValidateStatus } from './types'
-import { FORM_CONTEXT_KEY, FORM_ITEM_CONTEXT_KEY, type IFormContext, type IFormItemContext, type IFormItemRule } from '../types'
+import {
+  FORM_CONTEXT_KEY,
+  FORM_ITEM_CONTEXT_KEY,
+  type IFormContext,
+  type IFormItemContext,
+  type IFormItemRule,
+} from '../types'
 import AsyncValidator, { type RuleItem, type ValidateError } from 'async-validator'
 
 defineOptions({
@@ -18,7 +33,7 @@ const formContext = inject<IFormContext>(FORM_CONTEXT_KEY)
 
 const validateStatus = reactive<IValidateStatus>({
   state: 'idle',
-  errorMsg: ''
+  errorMsg: '',
 })
 
 const ref = useTemplateRef('lark-form-item')
@@ -51,19 +66,19 @@ const isRequired = computed<boolean>(() => {
 
 const getTriggeredRules = (trigger?: IFormItemRule['trigger']): RuleItem[] => {
   return (
-    itemRules.value?.filter((rule) => {
+    (itemRules.value?.filter((rule) => {
       if (!trigger || !rule.trigger) {
         return true
       }
       return rule.trigger === trigger
-    }) as RuleItem[] ?? []
+    }) as RuleItem[]) ?? []
   )
 }
 
 const validate: IExpose['validate'] = async (trigger?: IFormItemRule['trigger']) => {
   const triggeredRules = getTriggeredRules(trigger)
   if (triggeredRules.length === 0) {
-    return;
+    return
   }
   const validator = new AsyncValidator({
     [field.value]: triggeredRules,
@@ -71,12 +86,12 @@ const validate: IExpose['validate'] = async (trigger?: IFormItemRule['trigger'])
   validateStatus.state = 'validating'
   try {
     await validator.validate({ [field.value]: itemValue.value })
-    validateStatus.state = 'idle';
-    return;
+    validateStatus.state = 'idle'
+    return
   } catch (err) {
-    const { errors } = err as { errors: ValidateError[] };
+    const { errors } = err as { errors: ValidateError[] }
     validateStatus.state = 'error'
-    throw errors.map((e) => e.message);
+    throw errors.map((e) => e.message)
   }
 }
 
@@ -85,12 +100,12 @@ const clearValidate: IExpose['clearValidate'] = () => {
   validateStatus.errorMsg = ''
 }
 
-let initialVal: unknown = undefined;
+let initialVal: unknown = undefined
 
 const resetField: IExpose['resetField'] = () => {
   clearValidate()
   if (!formContext) {
-    return;
+    return
   }
   const { modelValue } = formContext
   if (modelValue && field.value && field.value in modelValue) {
@@ -109,8 +124,8 @@ const formItemContext = reactive<IFormItemContext>({
 provide(FORM_ITEM_CONTEXT_KEY, formItemContext)
 
 onMounted(() => {
-  formContext?.addField(formItemContext);
-  initialVal = itemValue.value;
+  formContext?.addField(formItemContext)
+  initialVal = itemValue.value
 })
 
 onUnmounted(() => {
@@ -126,16 +141,23 @@ defineExpose<IExpose>({
 </script>
 
 <template>
-  <div class="lark-form-item" ref="lark-form-item" :class="{
-    'is-error': validateStatus.state === 'error',
-    'is-required': isRequired,
-  }">
+  <div
+    class="lark-form-item"
+    ref="lark-form-item"
+    :class="{
+      'is-error': validateStatus.state === 'error',
+      'is-required': isRequired,
+    }"
+  >
     <div class="lark-form-item__label">
       <slot name="label">{{ label }}</slot>
     </div>
     <div class="lark-form-item__content">
       <slot></slot>
-      <div class="lark-form-item__error-msg" v-if="showErrorMsg && validateStatus.state === 'error'">
+      <div
+        class="lark-form-item__error-msg"
+        v-if="showErrorMsg && validateStatus.state === 'error'"
+      >
         {{ validateStatus.errorMsg }}
       </div>
     </div>

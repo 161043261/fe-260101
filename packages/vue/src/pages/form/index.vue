@@ -2,12 +2,12 @@
 import LarkForm from '@/components/form/index.vue'
 import LarkFormItem from '@/components/form/item/index.vue'
 import LarkButton from '@/components/button/index.vue'
-import { reactive } from 'vue';
-import type { LarkFormRules } from '@/components/form/types';
+import { reactive } from 'vue'
+import type { LarkFormRules } from '@/components/form/types'
 
 interface IFormData {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const formData = reactive<IFormData>({
@@ -16,11 +16,16 @@ const formData = reactive<IFormData>({
 })
 
 const rules: LarkFormRules<IFormData> = {
-  email: [
-    { type: 'email', required: true, trigger: 'blur' },
-  ],
+  email: [{ type: 'email', required: true, trigger: 'blur' }],
   password: [
-    { min: 4, max: 8, type: 'string', required: true, trigger: 'blur', message: '4 <= password.length <= 8' },
+    {
+      min: 4,
+      max: 8,
+      type: 'string',
+      required: true,
+      trigger: 'blur',
+      message: '4 <= password.length <= 8',
+    },
   ],
 }
 </script>
