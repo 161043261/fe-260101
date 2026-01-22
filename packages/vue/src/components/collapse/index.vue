@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { provide, ref, toRefs, watch } from 'vue'
-import type { IContext, IEmits, IProps, TName } from './types'
-import { KEY } from './constants'
+import { KEY, type IContext, type IEmits, type IProps, type TName } from './types'
 
 defineOptions({
   name: 'LarkCollapse',

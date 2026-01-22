@@ -9,7 +9,7 @@ import {
   toRef,
   useTemplateRef,
 } from 'vue'
-import type { IExpose, IProps, IValidateStatus } from './types'
+import type { IExpose, IProps, ISlots, IValidateStatus } from './types'
 import {
   FORM_CONTEXT_KEY,
   FORM_ITEM_CONTEXT_KEY,
@@ -75,8 +75,8 @@ const getTriggeredRules = (trigger?: IFormItemRule['trigger']): RuleItem[] => {
   )
 }
 
-const validate: IExpose['validate'] = async (trigger?: IFormItemRule['trigger']) => {
-  const triggeredRules = getTriggeredRules(trigger)
+const validate: IExpose['validate'] = async () => {
+  const triggeredRules = getTriggeredRules(formContext?.trigger)
   if (triggeredRules.length === 0) {
     return
   }
@@ -138,6 +138,8 @@ defineExpose<IExpose>({
   clearValidate,
   resetField,
 })
+
+defineSlots<ISlots>()
 </script>
 
 <template>
@@ -150,10 +152,10 @@ defineExpose<IExpose>({
     }"
   >
     <div class="lark-form-item__label">
-      <slot name="label">{{ label }}</slot>
+      <slot name="label" :label="label">{{ label }}</slot>
     </div>
     <div class="lark-form-item__content">
-      <slot></slot>
+      <slot :validate="validate"></slot>
       <div
         class="lark-form-item__error-msg"
         v-if="showErrorMsg && validateStatus.state === 'error'"

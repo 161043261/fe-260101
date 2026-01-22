@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, toRefs, useTemplateRef } from 'vue'
-import type { IExpose, IProps } from './types'
-import { getPrevBottomOffset } from './main'
+import { getPrevBottomOffset, type IExpose, type IProps } from './types'
 import LarkComponent from '@/components/common'
 import LarkIcon from '@/components/icon/index.vue'
 
@@ -90,21 +89,9 @@ const handleAfterLeave = () => {
 </script>
 
 <template>
-  <Transition
-    name="fade-up"
-    @after-leave="handleAfterLeave"
-    @enter="handleEnter"
-    :duration="duration"
-  >
-    <div
-      class="lark-message"
-      v-if="alive"
-      :class="computedClass"
-      ref="message-ref"
-      :style="computedStyle"
-      @mouseenter="clearTimer"
-      @mouseleave="startTimer"
-    >
+  <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter" :duration="duration">
+    <div class="lark-message" v-if="alive" :class="computedClass" ref="message-ref" :style="computedStyle"
+      @mouseenter="clearTimer" @mouseleave="startTimer">
       <div class="lark-message__content">
         <LarkComponent v-if="message" :element="message" />
       </div>

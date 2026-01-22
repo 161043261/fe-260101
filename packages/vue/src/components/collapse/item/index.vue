@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { IProps } from './types'
-import { KEY } from '../constants'
+import  { KEY, type IItemProps } from '../types'
 import type { IContext } from '../types'
 import { computed, inject, toRefs } from 'vue'
 import LarkIcon from '@/components/icon/index.vue'
@@ -9,7 +8,7 @@ defineOptions({
   name: 'LarkCollapseItem',
 })
 
-const props = defineProps<IProps>()
+const props = defineProps<IItemProps>()
 const { disabled, name } = toRefs(props)
 const context = inject<IContext>(KEY)
 

@@ -1,12 +1,11 @@
 import type { PropsWithClassName } from '@/types'
-import type { IProps } from './types'
+import { Context, type IItemProps } from '../types'
 import classNames from 'classnames'
 import { useContext, useMemo, type PropsWithChildren } from 'react'
-import { Context } from '../constants'
 import LarkIcon from '@/components/icon'
 import { useDisplayNone } from '@/hooks'
 
-function LarkCollapseItem(props: PropsWithClassName<PropsWithChildren<IProps>>) {
+function LarkCollapseItem(props: PropsWithClassName<PropsWithChildren<IItemProps>>) {
   const { disabled, name, title, className, children } = props
   const contextValue = useContext(Context)
 

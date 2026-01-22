@@ -33,12 +33,12 @@ const ref = useTemplateRef('lark-form')
 </script>
 
 <template>
-  <LarkForm ref="lark-form" v-model="formData" :rules="rules">
-    <LarkFormItem label="Email" field="email">
-      <input v-model="formData.email" />
+  <LarkForm ref="lark-form" v-model="formData" :rules="rules" trigger="blur">
+    <LarkFormItem label="Email" field="email" v-slot="{ validate }">
+      <input v-model="formData.email" @blur="validate" />
     </LarkFormItem>
-    <LarkFormItem label="Password" field="password">
-      <input v-model="formData.password" />
+    <LarkFormItem label="Password" field="password" v-slot="{ validate }">
+      <input v-model="formData.password" @blur="validate" />
     </LarkFormItem>
     <div>
       <LarkButton type="primary" @click.prevent="ref?.validates()">Submit</LarkButton>

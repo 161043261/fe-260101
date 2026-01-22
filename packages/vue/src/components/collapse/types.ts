@@ -1,6 +1,4 @@
 import type { Ref } from 'vue'
-import type { TName } from './item/types'
-export type { TName } from './item/types'
 
 export interface IContext {
   activeNames: Ref<TName[]>
@@ -14,4 +12,14 @@ export interface IProps {
 
 export interface IEmits {
   (eventName: 'change', value: TName[]): void
+}
+
+export const KEY = Symbol(new URL('./', import.meta.url).pathname)
+
+export type TName = string | number
+
+export interface IItemProps {
+  name: TName
+  title?: string
+  disabled?: boolean
 }

@@ -1,6 +1,5 @@
 import { useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
-import type { IExpose, IProps } from './types'
-import { getPrevBottomOffset } from './common'
+import { getPrevBottomOffset, type IExpose, type IProps } from './types'
 import type { PropsWithClassName, PropsWithRef } from '@/types'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'

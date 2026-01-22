@@ -1,8 +1,7 @@
 import type { PropsWithClassName } from '@/types'
-import type { IContext, IProps, TName } from './types'
+import { Context, type IContext, type IProps, type TName } from './types'
 import { useEffect, useMemo, useState, type PropsWithChildren } from 'react'
 import classNames from 'classnames'
-import { Context } from './constants'
 
 function LarkCollapse(props: PropsWithClassName<PropsWithChildren<IProps>>) {
   const { className, accordion, onChange, children } = props

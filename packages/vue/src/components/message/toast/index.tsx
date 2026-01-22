@@ -1,9 +1,11 @@
 import { render, type VNode } from 'vue'
 import LarkMessage from '../index.vue'
 import { useZIndexV2 as useZIndex } from '@/hooks'
-import type { IExpose, IMessageContext, IProps, IToast } from '../types'
+import {
+  messageContexts, closeAll,
+  type IExpose, type IMessageContext, type IProps, type IToast
+} from '../types'
 import { createHash } from '@/utils'
-import { messageContexts, closeAll } from '../main'
 
 function createToast(type: IProps['type'], message: string, closable?: boolean, duration?: number) {
   const { nextZIndex } = useZIndex()
