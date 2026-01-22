@@ -29,7 +29,7 @@ const rules: LarkFormRules<IFormData> = {
   ],
 }
 
-const ref = useTemplateRef("lark-form")
+const ref = useTemplateRef('lark-form')
 </script>
 
 <template>

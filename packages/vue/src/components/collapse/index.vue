@@ -9,7 +9,7 @@ defineOptions({
 
 const props = defineProps<IProps>()
 const emits = defineEmits<IEmits>()
-const modelValue = defineModel<TName[]>({ required: true });
+const modelValue = defineModel<TName[]>({ required: true })
 // const modelValue = toRef(props, 'modelValue');
 const { accordion } = toRefs(props)
 

@@ -12,7 +12,9 @@ defineOptions({
   name: 'LarkForm',
 })
 
-const modelValue = defineModel<Record<string, unknown>>()
+const modelValue = defineModel<Record<string, unknown>>({
+  required: true,
+})
 
 const props = withDefaults(defineProps<IProps>(), {
   trigger: 'blur',
@@ -59,7 +61,7 @@ const validates: IFormContext['validates'] = async () => {
   throw aggregateErrors
 }
 
-watch(modelValue, validates);
+watch(modelValue, validates)
 
 defineExpose<TExpose>({
   resetFields,
@@ -69,6 +71,7 @@ defineExpose<TExpose>({
 
 provide<IFormContext>(FORM_CONTEXT_KEY, {
   ...readonly(props),
+  modelValue: modelValue.value,
   addField,
   removeField,
   resetFields,

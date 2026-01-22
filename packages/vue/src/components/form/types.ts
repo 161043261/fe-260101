@@ -15,6 +15,9 @@ export interface IFormItemRule extends RuleItem {
 export type LarkFormRules<T = Record<string, unknown>> = Partial<Record<keyof T, IFormItemRule[]>>
 
 export interface IFormContext extends DeepReadonly<IProps> {
+  // const modelValue = defineModel<Record<string, unknown>>()
+  modelValue: Record<string, unknown>
+
   addField: (itemContext: IFormItemContext) => void
   removeField: (itemContext: IFormItemContext) => void
   resetFields: (fields?: string[]) => void
