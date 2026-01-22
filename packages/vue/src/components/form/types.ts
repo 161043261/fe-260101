@@ -2,13 +2,8 @@ import type { RuleItem } from 'async-validator'
 import type { DeepReadonly, InjectionKey } from 'vue'
 
 export interface IProps {
-  modelValue: Record<string, unknown>
   rules: LarkFormRules
   trigger?: 'blur' | 'change'
-}
-
-export interface IEmits {
-  (eventName: 'update:model-value', value: Record<string, unknown>): void
 }
 
 export interface IFormItemRule extends RuleItem {

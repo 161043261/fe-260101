@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { provide, readonly } from 'vue'
+import { provide, readonly, watch } from 'vue'
 import {
   FORM_CONTEXT_KEY,
   type IProps,
   type IFormContext,
   type IFormItemContext,
   type TExpose,
-  type IEmits,
 } from './types'
 
 defineOptions({
   name: 'LarkForm',
 })
 
+const modelValue = defineModel<Record<string, unknown>>()
+
 const props = withDefaults(defineProps<IProps>(), {
   trigger: 'blur',
 })
-
-const emits = defineEmits<IEmits>()
 
 const itemContexts: IFormItemContext[] = []
 
@@ -60,6 +59,8 @@ const validates: IFormContext['validates'] = async () => {
   throw aggregateErrors
 }
 
+watch(modelValue, validates);
+
 defineExpose<TExpose>({
   resetFields,
   validates,
@@ -74,7 +75,7 @@ provide<IFormContext>(FORM_CONTEXT_KEY, {
   clearValidates,
   validates,
   setModelValue(value) {
-    emits('update:model-value', value)
+    modelValue.value = value
   },
 })
 </script>

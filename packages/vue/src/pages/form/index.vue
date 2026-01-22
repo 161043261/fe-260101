@@ -2,7 +2,7 @@
 import LarkForm from '@/components/form/index.vue'
 import LarkFormItem from '@/components/form/item/index.vue'
 import LarkButton from '@/components/button/index.vue'
-import { reactive } from 'vue'
+import { reactive, useTemplateRef } from 'vue'
 import type { LarkFormRules } from '@/components/form/types'
 
 interface IFormData {
@@ -28,6 +28,8 @@ const rules: LarkFormRules<IFormData> = {
     },
   ],
 }
+
+const ref = useTemplateRef("lark-form")
 </script>
 
 <template>
@@ -39,7 +41,7 @@ const rules: LarkFormRules<IFormData> = {
       <input v-model="formData.password" />
     </LarkFormItem>
     <div>
-      <LarkButton type="primary">Submit</LarkButton>
+      <LarkButton type="primary" @click.prevent="ref?.validates()">Submit</LarkButton>
       <LarkButton type="info">Reset</LarkButton>
     </div>
   </LarkForm>

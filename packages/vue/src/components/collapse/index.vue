@@ -9,9 +9,9 @@ defineOptions({
 
 const props = defineProps<IProps>()
 const emits = defineEmits<IEmits>()
-
+const modelValue = defineModel<TName[]>({ required: true });
 // const modelValue = toRef(props, 'modelValue');
-const { modelValue, accordion } = toRefs(props)
+const { accordion } = toRefs(props)
 
 const activeNames = ref<TName[]>([])
 
@@ -22,7 +22,7 @@ watch(modelValue, () => {
 
 const setActiveNames = (names: TName[]) => {
   activeNames.value = names
-  emits('update:model-value', names)
+  modelValue.value = names
   emits('change', names)
 }
 

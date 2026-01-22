@@ -8,12 +8,10 @@ export interface IContext {
 }
 
 export interface IProps {
-  modelValue: TName[]
   // 是否开启手风琴模式, 即同时只能展开一个折叠项
   accordion?: boolean
 }
 
 export interface IEmits {
-  (eventName: 'update:model-value', value: TName[]): void
   (eventName: 'change', value: TName[]): void
 }
