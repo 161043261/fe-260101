@@ -89,9 +89,21 @@ const handleAfterLeave = () => {
 </script>
 
 <template>
-  <Transition name="fade-up" @after-leave="handleAfterLeave" @enter="handleEnter" :duration="duration">
-    <div class="lark-message" v-if="alive" :class="computedClass" ref="message-ref" :style="computedStyle"
-      @mouseenter="clearTimer" @mouseleave="startTimer">
+  <Transition
+    name="fade-up"
+    @after-leave="handleAfterLeave"
+    @enter="handleEnter"
+    :duration="duration"
+  >
+    <div
+      class="lark-message"
+      v-if="alive"
+      :class="computedClass"
+      ref="message-ref"
+      :style="computedStyle"
+      @mouseenter="clearTimer"
+      @mouseleave="startTimer"
+    >
       <div class="lark-message__content">
         <LarkComponent v-if="message" :element="message" />
       </div>

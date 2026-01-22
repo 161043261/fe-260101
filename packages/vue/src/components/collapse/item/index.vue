@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import  { KEY, type IItemProps } from '../types'
+import { KEY, type IItemProps } from '../types'
 import type { IContext } from '../types'
 import { computed, inject, toRefs } from 'vue'
 import LarkIcon from '@/components/icon/index.vue'

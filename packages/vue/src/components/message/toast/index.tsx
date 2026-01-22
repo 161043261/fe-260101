@@ -2,8 +2,12 @@ import { render, type VNode } from 'vue'
 import LarkMessage from '../index.vue'
 import { useZIndexV2 as useZIndex } from '@/hooks'
 import {
-  messageContexts, closeAll,
-  type IExpose, type IMessageContext, type IProps, type IToast
+  messageContexts,
+  closeAll,
+  type IExpose,
+  type IMessageContext,
+  type IProps,
+  type IToast,
 } from '../types'
 import { createHash } from '@/utils'
 

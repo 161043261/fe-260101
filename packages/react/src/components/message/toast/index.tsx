@@ -1,5 +1,12 @@
 import { useZIndex } from '@/hooks'
-import { type IExpose, type IMessageContext, type IProps, type IToast, closeAll, messageContexts } from '../types'
+import {
+  type IExpose,
+  type IMessageContext,
+  type IProps,
+  type IToast,
+  closeAll,
+  messageContexts,
+} from '../types'
 import { createHash } from '@/utils'
 import LarkMessage from '..'
 import { createRef, type FC, type ReactElement } from 'react'

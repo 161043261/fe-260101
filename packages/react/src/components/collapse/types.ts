@@ -11,7 +11,6 @@ export interface IProps {
   accordion?: boolean
 }
 
-
 export const Context = createContext<IContext | null>(null)
 
 export type TName = string | number

@@ -1,4 +1,4 @@
-import type { VNode } from "vue"
+import type { VNode } from 'vue'
 
 export interface IProps {
   label: string
@@ -17,7 +17,6 @@ export interface IExpose {
   clearValidate: () => void
   validate: () => Promise<void>
 }
-
 
 export interface ISlots {
   default: (props: { validate: IExpose['validate'] }) => VNode

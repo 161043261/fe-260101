@@ -31,7 +31,7 @@ export interface IFormItemContext {
   field: string
   resetField: () => void
   clearValidate: () => void
-  validate: (trigger?: IProps['trigger']) => Promise<void>,
+  validate: (trigger?: IProps['trigger']) => Promise<void>
 }
 
 export const FORM_CONTEXT_KEY: InjectionKey<IFormContext> = Symbol('FORM_CONTEXT_KEY')
