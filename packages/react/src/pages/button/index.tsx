@@ -17,7 +17,7 @@ const Container = styled.div`
   }
 `
 
-function ButtonDemo() {
+function Index() {
   return (
     <Container>
       <h3>Button Types</h3>
@@ -26,7 +26,7 @@ function ButtonDemo() {
         <LarkButton type="success">Success</LarkButton>
         <LarkButton type="info">Info</LarkButton>
         <LarkButton type="warning">Warning</LarkButton>
-        <LarkButton type="error">Danger</LarkButton>
+        <LarkButton type="error">Error</LarkButton>
       </div>
 
       <h3>Plain Buttons</h3>
@@ -44,7 +44,7 @@ function ButtonDemo() {
           Warning
         </LarkButton>
         <LarkButton type="error" plain>
-          Danger
+          Error
         </LarkButton>
       </div>
 
@@ -63,13 +63,13 @@ function ButtonDemo() {
           Warning
         </LarkButton>
         <LarkButton type="error" round>
-          Danger
+          Error
         </LarkButton>
       </div>
 
       <h3>Circle Buttons</h3>
       <div className="container-row">
-        <LarkButton type="primary" circle icon="search" />
+        <LarkButton type="primary" circle icon="edit" />
         <LarkButton type="success" circle icon="check" />
         <LarkButton type="info" circle icon="message" />
         <LarkButton type="warning" circle icon="star" />
@@ -115,7 +115,7 @@ function ButtonDemo() {
           Edit
         </LarkButton>
         <LarkButton type="success" icon="check">
-          Confirm
+          Check
         </LarkButton>
         <LarkButton type="error" icon="remove">
           Delete
@@ -125,4 +125,4 @@ function ButtonDemo() {
   )
 }
 
-export default ButtonDemo
+export default Index

@@ -1,8 +1,8 @@
 import type { RuleItem } from 'async-validator'
-import type { DeepReadonly, InjectionKey } from 'vue'
+import type { DeepReadonly, InjectionKey, VNode } from 'vue'
 
 export interface IProps {
-  rules: LarkFormRules
+  rules: TFormRules
   trigger?: 'blur' | 'change'
 }
 
@@ -12,7 +12,7 @@ export interface IFormItemRule extends RuleItem {
   trigger?: IProps['trigger']
 }
 
-export type LarkFormRules<T = Record<string, unknown>> = Partial<Record<keyof T, IFormItemRule[]>>
+export type TFormRules<T = Record<string, unknown>> = Partial<Record<keyof T, IFormItemRule[]>>
 
 export interface IFormContext extends DeepReadonly<IProps> {
   // const modelValue = defineModel<Record<string, unknown>>()
@@ -23,18 +23,41 @@ export interface IFormContext extends DeepReadonly<IProps> {
   resetFields: (fields?: string[]) => void
   clearValidates: (fields?: string[]) => void
   validates: () => Promise<void>
-  setModelValue: (value: Record<string, unknown>) => void
+  setModelValue: (field: string, value: unknown) => void
 }
 
 export interface IFormItemContext {
-  $el: HTMLDivElement | null
+  el: HTMLDivElement | null
   field: string
   resetField: () => void
   clearValidate: () => void
-  validate: (trigger?: IProps['trigger']) => Promise<void>
+  validate: () => Promise<void>
 }
 
 export const FORM_CONTEXT_KEY: InjectionKey<IFormContext> = Symbol('FORM_CONTEXT_KEY')
 export const FORM_ITEM_CONTEXT_KEY: InjectionKey<IFormItemContext> = Symbol('FORM_ITEM_CONTEXT_KEY')
 
-export type TExpose = Pick<IFormContext, 'validates' | 'resetFields' | 'clearValidates'>
+export type TFormExpose = Pick<IFormContext, 'validates' | 'resetFields' | 'clearValidates'>
+
+export interface IItemProps {
+  label: string
+  field: string
+  showErrorMsg?: boolean
+}
+
+export interface IValidateStatus {
+  state: 'idle' | 'validating' | 'error'
+  errorMsg: string
+}
+
+export interface IItemExpose {
+  validateStatus: IValidateStatus
+  resetField: () => void
+  clearValidate: () => void
+  validate: () => Promise<void>
+}
+
+export interface IItemSlots {
+  default: (props: { validate: IItemExpose['validate'] }) => VNode
+  label: (props: { label: string }) => VNode
+}

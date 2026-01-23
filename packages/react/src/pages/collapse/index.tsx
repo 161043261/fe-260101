@@ -33,7 +33,7 @@ const Container = styled.div`
   }
 `
 
-export default function CollapseDemo() {
+export default function Index() {
   const [basicActive, setBasicActive] = useState<TName[]>(['1'])
   const [accordionActive, setAccordionActive] = useState<TName[]>(['a'])
   const [disabledActive, setDisabledActive] = useState<TName[]>(['x'])

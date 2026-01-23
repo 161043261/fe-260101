@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { provide, readonly, watch } from 'vue'
+import { provide, readonly } from 'vue'
 import {
   FORM_CONTEXT_KEY,
   type IProps,
   type IFormContext,
   type IFormItemContext,
-  type TExpose,
+  type TFormExpose,
 } from './types'
 
 defineOptions({
@@ -50,7 +50,7 @@ const validates: IFormContext['validates'] = async () => {
   const aggregateErrors = []
   for (const ctx of itemContexts) {
     try {
-      await ctx.validate(props.trigger)
+      await ctx.validate()
     } catch (err) {
       aggregateErrors.push(err)
     }
@@ -61,9 +61,7 @@ const validates: IFormContext['validates'] = async () => {
   throw aggregateErrors
 }
 
-watch(modelValue, validates)
-
-defineExpose<TExpose>({
+defineExpose<TFormExpose>({
   resetFields,
   validates,
   clearValidates,
@@ -77,8 +75,8 @@ provide<IFormContext>(FORM_CONTEXT_KEY, {
   resetFields,
   clearValidates,
   validates,
-  setModelValue(value) {
-    modelValue.value = value
+  setModelValue(field: keyof typeof modelValue.value, value: unknown) {
+    modelValue.value[field] = value
   },
 })
 </script>

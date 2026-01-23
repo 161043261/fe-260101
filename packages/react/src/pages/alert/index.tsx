@@ -14,7 +14,7 @@ const Container = styled.div`
   }
 `
 
-function AlertDemo() {
+function Index() {
   return (
     <Container>
       <h3>Basic Usage</h3>
@@ -55,4 +55,4 @@ function AlertDemo() {
   )
 }
 
-export default AlertDemo
+export default Index

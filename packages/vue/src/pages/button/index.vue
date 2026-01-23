@@ -10,7 +10,7 @@ import LarkButton from '@/components/button/index.vue'
       <LarkButton type="success">Success</LarkButton>
       <LarkButton type="info">Info</LarkButton>
       <LarkButton type="warning">Warning</LarkButton>
-      <LarkButton type="error">Danger</LarkButton>
+      <LarkButton type="error">Error</LarkButton>
     </div>
 
     <h3>Plain Buttons</h3>
@@ -19,7 +19,7 @@ import LarkButton from '@/components/button/index.vue'
       <LarkButton type="success" plain>Success</LarkButton>
       <LarkButton type="info" plain>Info</LarkButton>
       <LarkButton type="warning" plain>Warning</LarkButton>
-      <LarkButton type="error" plain>Danger</LarkButton>
+      <LarkButton type="error" plain>Error</LarkButton>
     </div>
 
     <h3>Round Buttons</h3>
@@ -28,12 +28,12 @@ import LarkButton from '@/components/button/index.vue'
       <LarkButton type="success" round>Success</LarkButton>
       <LarkButton type="info" round>Info</LarkButton>
       <LarkButton type="warning" round>Warning</LarkButton>
-      <LarkButton type="error" round>Danger</LarkButton>
+      <LarkButton type="error" round>Error</LarkButton>
     </div>
 
     <h3>Circle Buttons</h3>
     <div class="container-row">
-      <LarkButton type="primary" circle icon="search" />
+      <LarkButton type="primary" circle icon="edit" />
       <LarkButton type="success" circle icon="check" />
       <LarkButton type="info" circle icon="message" />
       <LarkButton type="warning" circle icon="star" />
@@ -62,7 +62,7 @@ import LarkButton from '@/components/button/index.vue'
     <h3>With Icons</h3>
     <div class="container-row">
       <LarkButton type="primary" icon="edit">Edit</LarkButton>
-      <LarkButton type="success" icon="check">Confirm</LarkButton>
+      <LarkButton type="success" icon="check">Check</LarkButton>
       <LarkButton type="error" icon="remove">Delete</LarkButton>
     </div>
   </div>

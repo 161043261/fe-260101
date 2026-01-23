@@ -9,7 +9,7 @@ import {
   toRef,
   useTemplateRef,
 } from 'vue'
-import type { IExpose, IProps, ISlots, IValidateStatus } from './types'
+import type { IItemExpose, IItemProps, IItemSlots, IValidateStatus } from '../types'
 import {
   FORM_CONTEXT_KEY,
   FORM_ITEM_CONTEXT_KEY,
@@ -23,7 +23,7 @@ defineOptions({
   name: 'LarkFormItem',
 })
 
-const props = withDefaults(defineProps<IProps>(), {
+const props = withDefaults(defineProps<IItemProps>(), {
   showErrorMsg: true,
 })
 
@@ -43,7 +43,7 @@ const itemValue = computed(() => {
     return null
   }
   const { modelValue } = formContext
-  if (modelValue && field.value && field.value in modelValue) {
+  if (field.value in modelValue) {
     return modelValue[field.value]
   }
   return null
@@ -54,7 +54,7 @@ const itemRules = computed(() => {
     return []
   }
   const { rules } = formContext
-  if (rules && field.value && field.value in rules) {
+  if (field.value in rules) {
     return rules[field.value]
   }
   return []
@@ -75,7 +75,7 @@ const getTriggeredRules = (trigger?: IFormItemRule['trigger']): RuleItem[] => {
   )
 }
 
-const validate: IExpose['validate'] = async () => {
+const validate: IItemExpose['validate'] = async () => {
   const triggeredRules = getTriggeredRules(formContext?.trigger)
   if (triggeredRules.length === 0) {
     return
@@ -91,35 +91,36 @@ const validate: IExpose['validate'] = async () => {
   } catch (err) {
     const { errors } = err as { errors: ValidateError[] }
     validateStatus.state = 'error'
+    validateStatus.errorMsg = errors.map((e) => e.message).join('\n')
     throw errors.map((e) => e.message)
   }
 }
 
-const clearValidate: IExpose['clearValidate'] = () => {
+const clearValidate: IItemExpose['clearValidate'] = () => {
   validateStatus.state = 'idle'
   validateStatus.errorMsg = ''
 }
 
 let initialVal: unknown = undefined
 
-const resetField: IExpose['resetField'] = () => {
+const resetField: IItemExpose['resetField'] = () => {
   clearValidate()
   if (!formContext) {
     return
   }
   const { modelValue } = formContext
-  if (modelValue && field.value && field.value in modelValue) {
-    formContext.setModelValue({ [field.value]: initialVal })
+  if (field.value in modelValue) {
+    formContext.setModelValue(field.value, initialVal)
   }
 }
 
-const formItemContext = reactive<IFormItemContext>({
-  $el: ref.value,
+const formItemContext: IFormItemContext = {
+  el: ref.value,
   field: field.value,
   validate,
   clearValidate,
   resetField,
-})
+}
 
 provide(FORM_ITEM_CONTEXT_KEY, formItemContext)
 
@@ -132,14 +133,14 @@ onUnmounted(() => {
   formContext?.removeField(formItemContext)
 })
 
-defineExpose<IExpose>({
+defineExpose<IItemExpose>({
   validateStatus,
   validate,
   clearValidate,
   resetField,
 })
 
-defineSlots<ISlots>()
+defineSlots<IItemSlots>()
 </script>
 
 <template>

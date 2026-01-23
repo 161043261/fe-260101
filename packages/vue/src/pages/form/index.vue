@@ -3,7 +3,7 @@ import LarkForm from '@/components/form/index.vue'
 import LarkFormItem from '@/components/form/item/index.vue'
 import LarkButton from '@/components/button/index.vue'
 import { reactive, useTemplateRef } from 'vue'
-import type { LarkFormRules } from '@/components/form/types'
+import type { TFormRules } from '@/components/form/types'
 
 interface IFormData {
   email: string
@@ -15,7 +15,7 @@ const formData = reactive<IFormData>({
   password: 'forget?',
 })
 
-const rules: LarkFormRules<IFormData> = {
+const rules: TFormRules<IFormData> = {
   email: [{ type: 'email', required: true, trigger: 'blur' }],
   password: [
     {
@@ -42,7 +42,7 @@ const ref = useTemplateRef('lark-form')
     </LarkFormItem>
     <div>
       <LarkButton type="primary" @click.prevent="ref?.validates()">Submit</LarkButton>
-      <LarkButton type="info">Reset</LarkButton>
+      <LarkButton type="info" @click.prevent="ref?.resetFields()">Reset</LarkButton>
     </div>
   </LarkForm>
 </template>
